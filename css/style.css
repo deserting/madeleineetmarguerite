@@ -1,0 +1,1194 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+/***************************************************
+  Global Stylesheet — style.css (boho-mix v7)
+  • Section About (full‑height)
+  • Collapsible text & button styles
+  • Photo Strip défilante (transition artistique)
+  • IMPROVED Section Services avec transitions fluides
+***************************************************/
+
+/* 0-Menu */
+/* 1. Header transparent au-dessus du hero */
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.header-inner {
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+}
+
+/* 2. Hamburger icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* 3. Menu plein écran, overlay sombre (fade-in) */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.nav-menu li+li {
+  margin-top: var(--space-lg);
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  pointer-events: auto;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--color-accent);
+}
+
+/* 4. États « ouvert » */
+.hamburger.is-active .bar:nth-child(1) {
+  transform: translateY(0.65rem) rotate(45deg);
+}
+
+.hamburger.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+  transform: translateY(-0.65rem) rotate(-45deg);
+}
+
+.nav-menu.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  pointer-events: auto;
+}
+
+/* 5. Changement de couleur au scroll */
+.hamburger.scrolled .bar {
+  background-color: var(--color-accent);
+}
+
+
+
+
+/* ---------- 1. Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  /* évite que les ancres soient collées en haut */
+}
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* fichier variables.css ou tout en haut de style.css */
+body {
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .08) 0%, rgba(0, 0, 0, .02) 100%);
+
+  /* petit plus : fixe le fond quand on scroll (facultatif) */
+  background-attachment: fixed;
+}
+
+/* IMPORTANT : retire tout fond dégradé local */
+.services,
+#portfolio {
+  background: transparent;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p:not(:last-child) {
+  margin-bottom: var(--space-sm);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-accent-alt);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ---------- 3. Helpers ---------- */
+.container {
+  width: min(92%, 70rem);
+  margin-inline: auto;
+  padding-block: var(--space-lg);
+}
+
+.flow>*+* {
+  margin-top: var(--flow-space, var(--space-sm));
+}
+
+/* ---------- 4. Utilities ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 4px rgb(0 0 0 /.15);
+}
+
+/* ---------- 5. Hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding-inline: var(--space-sm);
+  background: url('../assets/img/hero.webp') center/cover no-repeat fixed;
+  position: relative;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0/.55) 0%, rgb(0 0 0/.4) 60%, rgb(0 0 0/.55) 100%);
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 6vw+1rem, 7rem);
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 2px 4px rgb(0 0 0 /.4);
+}
+
+.hero .tagline {
+  font-size: 1.125rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: .05em;
+  max-width: 40ch;
+  margin-inline: auto;
+  opacity: .9;
+}
+
+/* ---------- 6. About ---------- */
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dark);
+  padding-block: var(--space-xl);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .08) 0%, rgba(0, 0, 0, .18) 100%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.about .container {
+  display: grid;
+  gap: var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+@media(min-width:50em) {
+  .about .container {
+    grid-template-columns: minmax(320px, 480px) 1fr;
+    align-items: start;
+    column-gap: 5vw;
+  }
+}
+
+.about figure {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 4/5;
+  align-self: start;
+  border: 2px solid var(--color-line-light);
+  box-shadow: 0 2px 4px rgb(0 0 0 /.08), 0 8px 16px rgb(0 0 0 /.04);
+}
+
+.about figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about .flow {
+  max-width: 65ch;
+  margin-inline: 0;
+}
+
+.about-title {
+  font-size: clamp(4rem, 8vw+1rem, 7rem);
+  margin-bottom: var(--space-sm);
+}
+
+.kicker {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-lg);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.about p {
+  max-width: 65ch;
+}
+
+.about-more {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-medium) var(--ease-standard);
+}
+
+.about-more.open {
+  max-height: 1000px;
+}
+
+.btn-toggle-more {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: var(--space-lg) auto 0;
+  padding: .85rem 1rem;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.btn-toggle-more:hover,
+.btn-toggle-more:focus {
+  background: #2e2e2e;
+}
+
+.btn-toggle-more::after {
+  content: "▼";
+  font-size: .8em;
+  margin-left: .5rem;
+  transition: transform var(--duration-medium) var(--ease-standard);
+}
+
+.btn-toggle-more[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.btn-toggle-more:focus {
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Scribble (About) */
+.about .scribble {
+  position: absolute;
+  top: 1rem;
+  right: -5vw;
+  width: 60vw;
+  max-width: 800px;
+  stroke: var(--color-line-light);
+  stroke-width: 1;
+  fill: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- 6.5. Photo Strip ---------- */
+.photo-strip {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding-block: var(--space-lg);
+  position: relative;
+  border-top: 1px solid rgba(212, 163, 115, .2);
+  border-bottom: 1px solid rgba(212, 163, 115, .2);
+}
+
+.photo-strip::before,
+.photo-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  background: linear-gradient(90deg, var(--color-bg) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.photo-strip::before {
+  left: 0;
+}
+
+.photo-strip::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--color-bg) 0%, transparent 100%);
+}
+
+.strip-container {
+  width: 100%;
+  position: relative;
+}
+
+.strip-track {
+  display: flex;
+  gap: var(--space-sm);
+  animation: scroll-horizontal 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.strip-track img {
+  height: 180px;
+  width: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  filter: sepia(20%) contrast(1.1) brightness(0.95);
+  transition: filter var(--duration-medium) var(--ease-standard);
+  border: 2px solid rgba(212, 163, 115, .15);
+}
+
+.strip-track img:hover {
+  filter: sepia(0%) contrast(1) brightness(1);
+  transform: scale(1.02);
+}
+
+@media(min-width:50em) {
+  .strip-track img {
+    height: 220px;
+  }
+}
+
+@media(min-width:70em) {
+  .strip-track img {
+    height: 260px;
+  }
+}
+
+/* ---------- 7. Services ---------- */
+.services {
+  color: var(--color-text-dark);
+  padding-block: var(--space-xl);
+  position: relative;
+  isolation: isolate;
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
+}
+
+.services .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.services-title {
+  font-size: clamp(4rem, 8vw+1rem, 7rem);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+  color: #2d1f1a;
+}
+
+.services-grid {
+  display: grid;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  max-width: 85rem;
+  margin-inline: auto;
+}
+
+@media(min-width:50em) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+.service-item {
+  background: rgba(255, 255, 255, .25);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 12px;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  text-align: center;
+  transition: all var(--duration-medium) var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.service-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-medium) var(--ease-standard);
+}
+
+.service-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, .35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+}
+
+.service-item:hover::before {
+  opacity: 1;
+}
+
+.service-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw+1rem, 2.5rem);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  color: #2d1f1a;
+}
+
+.service-item p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a3b35;
+  margin-bottom: var(--space-md);
+}
+
+.service-price {
+  font-weight: 600;
+  color: #8b4513;
+  letter-spacing: .03em;
+  font-size: 1.2rem;
+  margin-top: auto;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: var(--space-xl) auto 0;
+  padding: 1rem 2rem;
+  background: var(--color-accent);
+  color: var(--color-text-dark);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+  box-shadow: 0 4px 12px rgba(212, 163, 115, .2);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #e8b584;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 163, 115, .3);
+}
+
+.btn-primary:focus {
+  outline: 2px dashed var(--color-accent-alt);
+  outline-offset: 4px;
+}
+
+/***************************************************
+  8. Portfolio — grille 3‑2‑1 façon Instagram
+***************************************************/
+
+/* --- Utilities : vertical section padding -------------------- */
+.py-24 {
+  padding-block: var(--space-xl);
+  /* 4 rem d’après tes variables */
+}
+
+.section-heading {
+  font-size: clamp(4rem, 8vw+1rem, 7rem);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: #2d1f1a;
+}
+
+.section-heading h1 {
+  margin-top: var(--space-sm);
+  /* petite respiration supplémentaire */
+}
+
+/* --- Grille centrée, 3 colonnes desktop, 2 tablette, 1 mobile --- */
+.grid-gallery {
+  --gap: 0.1rem;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(6, 1fr);
+  /*max-width: 58rem;*/
+  /* ~1080 px + gaps : joli cadre */
+  margin-inline: auto;
+  /* centre l’ensemble dans la section */
+  padding-inline: var(--gap);
+  margin-bottom: 0%;
+  scroll-padding-bottom: 0;
+}
+
+@media(max-width:991px) {
+  .grid-gallery {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+@media(max-width:640px) {
+  .grid-gallery {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1/1;
+  /*border-radius: var(--radius-lg);*/
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgb(0 0 0/.12);
+  transition: transform .35s var(--ease-standard), box-shadow .35s var(--ease-standard);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(0 0 0/.18)
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s var(--ease-standard)
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05)
+}
+
+/* Accent subtil sur focus clavier */
+.gallery-item a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  /*border-radius: var(--radius-lg)*/
+}
+
+
+/***************************************************
+  9. Interlude Photo (plein écran parallax)
+***************************************************/
+.interlude {
+  min-height: 100vh;
+  /* occupe tout le viewport */
+  display: grid;
+  place-items: center;
+  /* centre une éventuelle légende */
+  position: relative;
+  overflow: hidden;
+
+  /* Image de fond & parallaxe “à la Hero” */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* l’effet  */
+}
+
+/* Teinte légère pour la lisibilité du texte éventuel */
+.interlude::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, .45) 0%,
+      rgba(0, 0, 0, .25) 60%,
+      rgba(0, 0, 0, .45) 100%);
+  z-index: -1;
+}
+
+/* Caption optionnelle */
+.interlude-caption {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  color: #fff;
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+/* — Fallback iOS / Safari mobile (le fixed est ignoré) — */
+@supports (-webkit-touch-callout: none) {
+  .interlude {
+    background-attachment: scroll;
+    /* désactive le fixed */
+  }
+}
+
+
+
+
+/***************************************************
+  11. Testimonials timeline — fine‑tuned alignment
+***************************************************/
+.testi-timeline {
+  position: relative;
+  color: var(--color-text-dark);
+}
+
+/* containment + air on both sides */
+.testi-list {
+  margin: 0;
+  padding: 0 clamp(var(--space-lg), 4vw, var(--space-xl));
+  /* responsive side padding */
+  list-style: none;
+  position: relative;
+}
+
+/* filet doré au centre */
+.testi-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--color-accent);
+}
+
+/* node générique */
+.testi-node {
+  position: relative;
+  margin-bottom: var(--space-xl);
+  width: 44%;
+  /* même espace des deux côtés */
+}
+
+/* alignement gauche / droite */
+.testi-node.left {
+  padding-right: var(--space-md);
+  margin-left: 0;
+  text-align: right;
+}
+
+.testi-node.right {
+  padding-left: var(--space-md);
+  margin-left: 56%;
+  /* 50% + 6% = même écart */
+  text-align: left;
+}
+
+/* pastille discrète – désactivée.  Dé‑commente pour l’afficher 
+.testi-node::before{
+  content:"";
+  position:absolute;top:.4rem;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--color-accent);opacity:.25;
+}
+.testi-node.left::before{right:-calc(var(--space-md)/2)}
+.testi-node.right::before{left:-calc(var(--space-md)/2)}
+*/
+
+blockquote {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 32rem;
+  display: inline-block;
+  /* pour caler contre la ligne */
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+
+/* Mobile : tout en colonne */
+@media(max-width:640px) {
+  .testi-list {
+    padding: 0 var(--space-lg);
+  }
+
+  .testi-list::before {
+    display: none;
+  }
+
+  .testi-node,
+  .testi-node.left,
+  .testi-node.right {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    padding: 0;
+  }
+}
+
+
+/***************************************************
+  11.5  Google‑rating node inside timeline
+***************************************************/
+/*  Permet d’insérer une “carte” note Google comme dernier nœud */
+.testi-node.center {
+  width: 100%;
+  /* occupe toute la largeur */
+  margin-left: 0;
+  padding: 0;
+  text-align: center;
+  /* centre le contenu */
+}
+
+/* mini‑carte réutilisable (inline) */
+/* look épuré, plus de fond ni ombre */
+.gmb-card-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+
+.gmb-card-inline .rating {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.gmb-card-inline .stars {
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  letter-spacing: .12rem;
+}
+
+.gmb-card-inline .count {
+  font-size: .9rem;
+  opacity: .75;
+  margin-left: .4rem;
+}
+
+.gmb-card-inline .cta {
+  font-size: .9rem;
+  color: var(--color-accent-alt);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+.gmb-card-inline .cta:hover {
+  color: var(--color-accent);
+}
+
+
+/***************************************************
+  13. Contact
+***************************************************/
+.contact-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media(min-width:50em) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    column-gap: 5vw;
+  }
+}
+
+/* Texte & liens */
+
+/* Colonne infos : même typo & couleur que le texte “About” */
+.contact-info,
+.contact-info p,
+.contact-info strong {
+  color: var(--color-text-dark);
+  /* même teinte que About */
+  font-weight: 400;
+  /* régular, pas bold */
+  line-height: 1.7;
+}
+
+/* Titre des champs (= <label>) */
+.contact-form label {
+  color: var(--color-text-dark);
+  font-weight: 500;
+  /* un soupçon plus marqué pour la lisibilité */
+  letter-spacing: .02em;
+}
+
+.contact-info p {
+  max-width: 50ch;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li:not(:last-child) {
+  margin-bottom: var(--space-sm);
+}
+
+.contact-list a {
+  color: var(--color-accent-alt);
+}
+
+.contact-list a:hover {
+  color: var(--color-accent);
+}
+
+/* Formulaire */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  font-size: 1rem;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, .25);
+  outline: none;
+}
+
+/* Bouton primaire ré-utilisé (déjà défini) */
+
+
+/***************************************************
+  14. Galerie privée – mot-de-passe final
+***************************************************/
+.private-gallery {
+  background: var(--color-text-dark);
+  /* fond dark */
+  text-align: center;
+  padding-block: var(--space-xl);
+}
+
+/* Titre : exactement le même gabarit que tes autres sections */
+.private-gallery .section-heading {
+  font-family: var(--font-display);
+  color: var(--color-accent);
+  font-size: clamp(4rem, 8vw + 1rem, 7rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+.private-gallery h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw + 1rem, 6rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+/* Tagline : style “About” classique */
+.private-gallery p {
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  /* même teinte que About */
+  font-weight: 400;
+  /* régular, pas bold */
+  line-height: 1.7;
+}
+
+/* Bouton noir façon “En savoir plus” (no arrow) */
+#btn-gallery {
+  display: inline-block;
+  padding: 1rem 2.25rem;
+  background: var(--color-accent);
+  color: var(--color-text-dark);
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.btn-dark:hover,
+.btn-dark:focus {
+  background: #2e2e2e;
+  transform: translateY(-2px);
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* titre “Galerie privée” : même gabarit que Services / Portfolio */
+.private-gallery .section-heading {
+  font-size: clamp(1rem, 1vw + 1rem, 5rem);
+  /* un cran plus petit */
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------
+   Fine‑tuning : Galerie privée (alignement & bouton)
+   ------------------------------------------------ */
+.private-gallery {
+  justify-content: flex-start;
+  /* titre collé en haut */
+  padding-top: var(--space-xl);
+  /* même respiration qu’une section standard */
+}
+
+/* Bouton “Entrer” plus fin & élégant */
+#btn-gallery {
+  width: auto;
+  /* plus de 100 % */
+  max-width: none;
+  padding: .75rem 1.5rem;
+  /* plus discret */
+  font-size: 1rem;
+  letter-spacing: .03em;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 8px rgb(0 0 0/.12);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#btn-gallery:hover,
+#btn-gallery:focus {
+  transform: translateY(-2px);
+  background: #e8b584;
+}
+
+/* ----------------------------------------
+   Ensure Galerie privée uses flex for vertical centering 
+------------------------------------------- */
+.private-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/***************************************************
+  15. Footer
+***************************************************/
+.site-footer {
+  background: var(--color-text-dark);
+  color: var(--color-text);
+  text-align: center;
+  padding-block: var(--space-lg);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-md);
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.footer-links .icon {
+  font-size: 1.2rem;
+}
+
+.footer-copy {
+  margin-bottom: var(--space-sm);
+}
+
+#brand {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+.footer-note {
+  font-size: 1rem;
+  opacity: .85;
+}

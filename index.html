@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Madeleine &amp; Marguerite</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <!-- GLightbox CSS (≈4 kB gzip) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <!-- Core styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link rel="preload" as="image" href="assets/img/hero.webp">
+  <link rel="preload" as="image" href="assets/img/portrait.webp">
+  <link rel="preload" as="image" href="assets/img/interlude.webp">
+
+</head>
+
+<body>
+  <!-- index.html -->
+  <header id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="logo">Madeleine & Marguerite</a>
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+
+  <main id="content">
+    <!-- Hero -------------------------------------------------- -->
+    <section id="hero" class="hero">
+      <div class="container flow" style="text-align:center;">
+        <h1>Madeleine &amp; Marguerite</h1>
+        <p class="tagline">Je capture les petits riens authentiques</p>
+      </div>
+    </section>
+
+    <!-- Bienvenue -------------------------------------------- -->
+    <section id="about" class="about">
+      <div class="container">
+        <!-- Portrait -->
+        <figure>
+          <img src="assets/img/portrait.webp" alt="Votre photographe" />
+        </figure>
+
+        <!-- Texte -->
+        <div class="flow">
+          <h2 class="about-title">Bienvenue</h2>
+          <p class="kicker">Laissez-moi me présenter</p>
+
+          <!-- Intro visible -->
+          <p>Bienvenue dans mon univers. Ici, chaque image raconte un peu de vous. Une émotion, un détail, une lumière…
+          </p>
+          <p>Je fais des photos comme on fait des tartines le matin&nbsp;: avec amour, &amp; envie que ça réchauffe le
+            cœur.</p>
+
+          <!-- Texte étendu masqué -->
+          <div id="about-more" class="about-more" hidden>
+            <p>Je photographie les familles qui rient, les ventres qui s'arrondissent, les mains qui se cherchent, les
+              regards qui en disent long, les enfants qui courent trop vite, les bisous volés.</p>
+            <p>Mon univers&nbsp;? Un mélange de lumière douce, un soupçon de grain, &amp; des images un peu comme au
+              ciné. Je capture ce que vous êtes. Ce que vous ne voyez pas toujours, mais qui est là. Le lien, la
+              tendresse, le silence.</p>
+            <p>J'aime tout ce qui est vivant et qui déborde un peu.</p>
+            <p>📍 Basée à Lyon, j'ai un amour inconditionnel pour la golden hour (matin ou soir, selon les oiseaux),
+              &amp; je me déplace volontiers là où le cœur me porte — surtout jusqu'au Pays Basque.</p>
+            <p>Si vous aimez les photos qui provoquent quelque chose en vous, &amp; les instants simples mais forts en
+              émotions… alors je crois qu'on va bien s'entendre.</p>
+          </div>
+
+          <!-- Bouton toggle -->
+          <button class="btn-toggle-more" aria-expanded="false" aria-controls="about-more">
+            En&nbsp;savoir&nbsp;plus
+          </button>
+        </div>
+      </div>
+
+      <!-- Scribble décoratif -->
+      <svg class="scribble" viewBox="0 0 600 120" aria-hidden="true">
+        <path d="M0 80 C150 10, 450 150, 600 40" />
+      </svg>
+    </section>
+
+    <!-- Photo Strip Transition --------------------------------- -->
+    <section class="photo-strip" aria-hidden="true">
+      <div class="strip-container">
+        <div class="strip-track">
+          <img src="assets/img/gallery/01.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/02.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/03.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/04.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/05.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/06.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/07.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/08.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/09.webp" alt="" loading="lazy" />
+          <!-- Duplication pour le loop infini -->
+          <img src="assets/img/gallery/01.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/02.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/03.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/04.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/05.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/06.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/07.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/08.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/09.webp" alt="" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Prestations -------------------------------------------- -->
+    <section id="services" class="services">
+      <div class="container flow">
+        <h2 class="services-title">Prestations</h2>
+
+        <div class="services-grid">
+          <article class="service-item flow">
+            <h3 class="service-name">Mariage</h3>
+            <p>Reportage complet de votre journée, des préparatifs aux moments forts.</p>
+            <p class="service-price">À&nbsp;partir&nbsp;de&nbsp;1200&nbsp;€</p>
+          </article>
+
+          <article class="service-item flow">
+            <h3 class="service-name">Naissance &amp; Grossesse</h3>
+            <p>Séance douce et intime pour immortaliser l'arrivée d'un enfant.</p>
+            <p class="service-price">À&nbsp;partir&nbsp;de&nbsp;400&nbsp;€</p>
+          </article>
+
+          <article class="service-item flow">
+            <h3 class="service-name">Famille</h3>
+            <p>Moments vrais et complices, en intérieur ou en extérieur.</p>
+            <p class="service-price">À&nbsp;partir&nbsp;de&nbsp;300&nbsp;€</p>
+          </article>
+        </div>
+
+        <button class="btn-primary">Réserver&nbsp;mon&nbsp;créneau</button>
+      </div>
+    </section>
+
+
+    <!-- Portfolio -------------------------------------------------- -->
+    <!-- ========== PORTFOLIO =================================================== -->
+    <section id="portfolio" class="py-24">
+      <h2 class="section-heading">Portfolio</h2>
+
+      <ul class="grid-gallery" role="list">
+        <!-- 1 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/01.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/01thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 2 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/02.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/02thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 3 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/03.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/03thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 4 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/04.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/04thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 5 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/05.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/05thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 6 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/06.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/06thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 7 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/07.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/07thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 8 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/08.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/08thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 9 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/09.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/09thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 10 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/10.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/10thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 11 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/11.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/11thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 12 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/12.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/12thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 13 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/13.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/13thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 14 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/14.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/14thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 15 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/15.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/15thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 16 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/16.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/16thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 17 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/17.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/17thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 18 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/18.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Voir Projet 01 en grand">
+            <img src="assets/img/portfolio/thumbs/18thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+      </ul>
+    </section>
+    <!-- ======================================================================= -->
+
+    <!-- Interlude Photo ------------------------------------------------>
+    <section id="interlude" class="interlude" style="background-image:url('assets/img/interlude.webp');">
+      <!--  Option : petite légende ou citation au centre  -->
+      <!-- <p class="interlude-caption">“Parce que chaque instant compte…”</p> -->
+    </section>
+
+
+    <!-- ─── AVIS CLIENTS ─────────────────────────── -->
+    <section id="avis" class="testi-timeline py-24">
+      <ol class="testi-list">
+
+        <!-- Titre = premier nœud ---------------------------------->
+        <!--<li class="testi-node left title-node">
+      <h2 class="timeline-title">Ils m’ont fait confiance</h2>
+    </li>-->
+
+        <li class="testi-node left">
+          <blockquote>
+            « Un moment fun et naturel ! Les photos respirent la complicité —
+            un vrai trésor pour nous. »
+            <cite>Famille&nbsp;Dupont</cite>
+          </blockquote>
+        </li>
+
+        <!-- 1 -->
+        <li class="testi-node right">
+          <blockquote>
+            « Nous avons vécu une journée inoubliable ! Les photos retranscrivent
+            toute l’émotion de notre mariage. »
+            <cite>Laura&nbsp;&amp;&nbsp;Antoine</cite>
+          </blockquote>
+        </li>
+
+        <!-- 2 -->
+        <li class="testi-node left">
+          <blockquote>
+            « Marie a su créer une atmosphère douce pour la séance naissance ;
+            les clichés sont juste magnifiques. »
+            <cite>Marine&nbsp;B.</cite>
+          </blockquote>
+        </li>
+
+        <!-- 3 -->
+        <li class="testi-node right">
+          <blockquote>
+            « Un moment fun et naturel ! Les photos respirent la complicité —
+            un vrai trésor pour nous. »
+            <cite>Famille&nbsp;Dupont</cite>
+          </blockquote>
+        </li>
+
+        <li class="testi-node left">
+          <span class="gmb-card-inline">
+            <span class="rating">5,0</span>
+            <span class="stars">★★★★★</span>
+            <span class="count">(42 avis)</span>
+            <a href="https://goo.gl/maps/xxxxxxxxxxxx" target="_blank" rel="noopener" class="cta">Lire sur Google</a>
+          </span>
+        </li>
+
+
+      </ol>
+    </section>
+
+
+    <!-- ─── CONTACT ───────────────────────────────────────── -->
+    <section id="contact" class="contact py-24">
+      <div class="container contact-grid">
+
+        <!-- Colonne infos -->
+        <div class="contact-info flow">
+          <h2 class="section-heading">Me&nbsp;contacter</h2>
+          <p>Si tu es sensible à ce que tu viens de voir & que tu penses qu’on créera des choses vraies.</p>
+
+          <ul class="contact-list">
+            <li><strong>Email&nbsp;:</strong> <a href="mailto:hello@madeleine-marguerite.fr">
+                hello@madeleine-marguerite.fr</a></li>
+            <li><strong>Basée à&nbsp;:</strong> Lyon&nbsp;— déplacements partout en France</li>
+          </ul>
+        </div>
+
+        <!-- Colonne formulaire -->
+        <form class="contact-form" action="#" method="post">
+          <div class="field">
+            <label for="name">Votre nom</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="field">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Envoyer&nbsp;✉︎</button>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- ─── GALERIE PRIVÉE ────────────────────────── -->
+    <section id="galerie" class="private-gallery">
+      <h2 class="section-heading">Galerie&nbsp;privée</h2>
+      <p>Vos souvenirs ne tiennent qu’à un mot&nbsp;de&nbsp;passe.</p>
+
+      <a href="galerie-privee/index.php" class="btn-primary" id="btn-gallery">Entrer</a>
+    </section>
+
+
+
+
+  </main>
+
+  <!-- ─── FOOTER ──────────────────────────────────────── -->
+  <footer class="site-footer">
+
+    <ul class="footer-links">
+      <li><a href="#"><span class="icon">📧</span>Contact</a></li>
+      <li><a href="#"><span class="icon">⚖️</span>Mentions légales</a></li>
+      <li><a href="#"><span class="icon">📷</span>Instagram</a></li>
+    </ul>
+
+    <p class="footer-copy">© <span id="brand">Madeleine&nbsp;&amp;&nbsp;Marguerite</span> · <span id="year">2025</span>
+    </p>
+    <p class="footer-note">Merci d’être venu jusqu’ici. Peut-être qu’on ira plus loin ensemble.</p>
+
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    /* Initialisation — ultra simple */
+    const lightbox = GLightbox({
+      selector: '.glightbox',  // c’est déjà la classe sur chaque <a>
+      loop: true,              // navigue en boucle
+      touchNavigation: true,   // swipe mobile
+      closeButton: true
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+  <script>smoothscroll.polyfill();</script>
+
+  <script src="js/main.js" defer></script>
+</body>
+
+</html>
