@@ -516,7 +516,6 @@ a:focus {
 
 /* ---------- 7. Services ---------- */
 .services {
-  color: var(--color-text-dark);
   padding-block: var(--space-xl);
   position: relative;
   isolation: isolate;
@@ -541,7 +540,7 @@ a:focus {
   font-size: clamp(4rem, 8vw+1rem, 7rem);
   margin-bottom: var(--space-xl);
   text-align: center;
-  color: #2d1f1a;
+  color: var(--color-text-dark);
 }
 
 .services-grid {
@@ -598,7 +597,7 @@ a:focus {
   font-size: clamp(1.8rem, 3vw+1rem, 2.5rem);
   font-weight: 500;
   margin-bottom: var(--space-sm);
-  color: #2d1f1a;
+  color: var(--color-text-dark);
 }
 
 .service-item p {
@@ -610,7 +609,7 @@ a:focus {
 
 .service-price {
   font-weight: 600;
-  color: #8b4513;
+  color: var(--color-accent);
   letter-spacing: .03em;
   font-size: 1.2rem;
   margin-top: auto;
