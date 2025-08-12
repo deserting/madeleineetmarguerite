@@ -1,0 +1,64 @@
+/* Galerie privée — overrides minimaux
+   On s’appuie sur ../css/style.css pour TOUT (grille, titres, boutons, couleurs)
+   => pas de duplication ni de conflit
+*/
+
+/* Intro / micro-texte (respire comme sur le site) */
+.intro {
+  text-align: center;
+  opacity: .9;
+  max-width: 60ch;
+  margin: 0 auto var(--space-lg);
+}
+
+/* Carte de login (cohérente avec le style global) */
+.login-card {
+  width: min(100%, 440px);
+  margin: var(--space-md) auto var(--space-xl);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  backdrop-filter: blur(6px);
+}
+.field { display: grid; gap: .4rem; margin-bottom: var(--space-md); }
+.login-card label { letter-spacing: .02em; color: var(--color-text); }
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: .9rem 1rem;
+  font-size: 1rem;
+  background: #fff; color: #111;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.login-card input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(212,163,115,.25);
+  outline: none;
+}
+
+/* Lien déconnexion */
+.logout { text-align: center; margin-bottom: var(--space-sm); }
+.logout a {
+  color: var(--color-accent-alt);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+.logout a:hover { color: var(--color-accent); }
+
+/* Zone bouton WeTransfer */
+.download-all { display: grid; place-items: center; margin-top: var(--space-lg); }
+
+/* Messages d’erreur/succès */
+.notice {
+  display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem;
+  padding: .9rem 1rem; border: 1px solid; border-radius: var(--radius-sm);
+  background: #fff; color: #111; margin-bottom: var(--space-md);
+}
+.notice.is-error { border-color: #b3261e; background: #ffeeee; }
+.notice strong { font-weight: 600; }

@@ -6,6 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <meta name="description"
+    content="Photographe documentaire à Lyon — mariages, naissances, familles. Des images sensibles, naturelles et lumineuses.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Madeleine & Marguerite — Photographe documentaire à Lyon">
+  <meta property="og:description" content="Mariage, naissance, famille. Des souvenirs vrais, sans poses.">
+  <meta property="og:image" content="https://madeleineetmarguerite.fr/assets/img/hero.webp">
+  <meta property="og:url" content="https://madeleineetmarguerite.fr/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://madeleineetmarguerite.fr/">
+
+
+
   <title>Madeleine &amp; Marguerite</title>
 
   <!-- Google Fonts -->
@@ -21,13 +34,18 @@
   <link rel="preload" as="image" href="assets/img/portrait.webp">
   <link rel="preload" as="image" href="assets/img/interlude.webp">
 
+  <link rel="preload" as="image" href="assets/img/gallery/01.webp" imagesrcset="assets/img/gallery/01.webp 1x">
+  <link rel="preload" as="image" href="assets/img/gallery/02.webp">
+  <link rel="preload" as="image" href="assets/img/gallery/03.webp">
+  <link rel="preload" as="image" href="assets/img/gallery/04.webp">
+
 </head>
 
 <body>
   <!-- index.html -->
   <header id="site-header">
     <div class="header-inner container">
-      <a href="/" class="logo">Madeleine & Marguerite</a>
+      <a href="index.html" class="logo">Madeleine & Marguerite</a>
       <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -42,7 +60,10 @@
     <section id="hero" class="hero">
       <div class="container flow" style="text-align:center;">
         <h1>Madeleine &amp; Marguerite</h1>
-        <p class="tagline">Je capture les petits riens authentiques</p>
+        <p class="tagline">
+          Je capture les petits riens <span id="typed"></span><span class="cursor" aria-hidden="true">|</span>
+        </p>
+
       </div>
     </section>
 
@@ -96,9 +117,9 @@
     <section class="photo-strip" aria-hidden="true">
       <div class="strip-container">
         <div class="strip-track">
-          <img src="assets/img/gallery/01.webp" alt="" loading="lazy" />
-          <img src="assets/img/gallery/02.webp" alt="" loading="lazy" />
-          <img src="assets/img/gallery/03.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/01.webp" alt="" decoding="async" loading="eager" />
+          <img src="assets/img/gallery/02.webp" alt="" decoding="async" loading="eager" />
+          <img src="assets/img/gallery/03.webp" alt="" decoding="async" loading="eager" />
           <img src="assets/img/gallery/04.webp" alt="" loading="lazy" />
           <img src="assets/img/gallery/05.webp" alt="" loading="lazy" />
           <img src="assets/img/gallery/06.webp" alt="" loading="lazy" />
@@ -158,35 +179,37 @@
         <!-- 1 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/01.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/01thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo d'un couple s'embrassant au coucher du soleil">
+            <img src="assets/img/portfolio/thumbs/01thumb.webp"
+              alt="Couple s'embrassant tendrement durant la golden hour." loading="lazy" width="400" height="400">
           </a>
         </li>
 
         <!-- 2 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/02.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/02thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo d'une future maman tenant son ventre">
+            <img src="assets/img/portfolio/thumbs/02thumb.webp"
+              alt="Femme enceinte en robe blanche dans un champ de fleurs." loading="lazy" width="400" height="400">
           </a>
         </li>
 
         <!-- 3 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/03.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/03thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo de détails de mains de nouveau-né">
+            <img src="assets/img/portfolio/thumbs/03thumb.webp"
+              alt="Gros plan sur les petits doigts d'un nouveau-né tenant le doigt de son parent." loading="lazy"
+              width="400" height="400">
           </a>
         </li>
 
         <!-- 4 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/04.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/04thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'une famille riant dans un parc">
+            <img src="assets/img/portfolio/thumbs/04thumb.webp"
+              alt="Famille de quatre personnes jouant et riant ensemble sur l'herbe." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -194,8 +217,9 @@
         <!-- 5 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/05.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/05thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'une mariée regardant par la fenêtre">
+            <img src="assets/img/portfolio/thumbs/05thumb.webp"
+              alt="Mariée en robe de dentelle, regardant pensivement par une grande fenêtre." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -203,8 +227,9 @@
         <!-- 6 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/06.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/06thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'un enfant courant sur une plage">
+            <img src="assets/img/portfolio/thumbs/06thumb.webp"
+              alt="Jeune garçon courant joyeusement sur le sable au bord de l'océan." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -212,8 +237,9 @@
         <!-- 7 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/07.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/07thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'un bouquet de mariée">
+            <img src="assets/img/portfolio/thumbs/07thumb.webp"
+              alt="Gros plan sur un bouquet de mariée composé de pivoines et d'eucalyptus." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -221,8 +247,9 @@
         <!-- 8 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/08.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/08thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'un couple de dos marchant dans la forêt">
+            <img src="assets/img/portfolio/thumbs/08thumb.webp"
+              alt="Couple se tenant la main, marchant sur un sentier forestier en automne." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -230,8 +257,9 @@
         <!-- 9 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/09.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/09thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'un bébé souriant dans son berceau">
+            <img src="assets/img/portfolio/thumbs/09thumb.webp"
+              alt="Bébé de quelques mois souriant, emmailloté dans un drap blanc." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -239,35 +267,37 @@
         <!-- 10 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/10.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/10thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo d'une alliance sur un livre">
+            <img src="assets/img/portfolio/thumbs/10thumb.webp"
+              alt="Deux alliances en or posées sur les pages d'un vieux livre." loading="lazy" width="400" height="400">
           </a>
         </li>
 
         <!-- 11 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/11.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/11thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo d'une petite fille cueillant des fleurs">
+            <img src="assets/img/portfolio/thumbs/11thumb.webp"
+              alt="Petite fille avec un chapeau de paille cueillant des marguerites dans un pré." loading="lazy"
+              width="400" height="400">
           </a>
         </li>
 
         <!-- 12 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/12.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/12thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo d'un couple riant sous la pluie">
+            <img src="assets/img/portfolio/thumbs/12thumb.webp"
+              alt="Couple partageant un parapluie et riant sous une averse." loading="lazy" width="400" height="400">
           </a>
         </li>
 
         <!-- 13 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/13.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/13thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'une femme enceinte assise">
+            <img src="assets/img/portfolio/thumbs/13thumb.webp"
+              alt="Future maman assise en tailleur, caressant son ventre arrondi." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -275,26 +305,29 @@
         <!-- 14 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/14.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/14thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo de pieds de bébé">
+            <img src="assets/img/portfolio/thumbs/14thumb.webp"
+              alt="Gros plan sur les pieds d'un nouveau-né tenus dans les mains de ses parents." loading="lazy"
+              width="400" height="400">
           </a>
         </li>
 
         <!-- 15 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/15.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/15thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
-              height="400">
+            aria-label="Agrandir la photo d'une famille se promenant au bord de l'eau">
+            <img src="assets/img/portfolio/thumbs/15thumb.webp"
+              alt="Silhouette d'une famille se tenant la main au coucher du soleil sur une plage." loading="lazy"
+              width="400" height="400">
           </a>
         </li>
 
         <!-- 16 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/16.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/16thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo de la première danse des mariés">
+            <img src="assets/img/portfolio/thumbs/16thumb.webp"
+              alt="Couple de mariés effectuant leur première danse, entourés de lumières." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -302,8 +335,9 @@
         <!-- 17 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/17.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/17thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'un père et son fils se regardant">
+            <img src="assets/img/portfolio/thumbs/17thumb.webp"
+              alt="Père tenant son jeune fils dans ses bras, se regardant avec tendresse." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -311,8 +345,9 @@
         <!-- 18 -->
         <li class="gallery-item">
           <a href="assets/img/portfolio/hd/18.webp" class="glightbox" data-gallery="portfolio"
-            aria-label="Voir Projet 01 en grand">
-            <img src="assets/img/portfolio/thumbs/18thumb.webp" alt="Projet 01 – Description" loading="lazy" width="400"
+            aria-label="Agrandir la photo d'un couple âgé se tenant la main">
+            <img src="assets/img/portfolio/thumbs/18thumb.webp"
+              alt="Gros plan sur les mains ridées d'un couple âgé, entrelacées." loading="lazy" width="400"
               height="400">
           </a>
         </li>
@@ -393,17 +428,25 @@
         <!-- Colonne infos -->
         <div class="contact-info flow">
           <h2 class="section-heading">Me&nbsp;contacter</h2>
-          <p>Si tu es sensible à ce que tu viens de voir & que tu penses qu’on créera des choses vraies.</p>
+          <p>
+            Si tu es sensible à ce que tu viens de voir &amp; que tu penses qu’on créera des choses
+            <span id="typed-contact"></span><span class="cursor" aria-hidden="true">|</span>.
+          </p>
+
 
           <ul class="contact-list">
-            <li><strong>Email&nbsp;:</strong> <a href="mailto:hello@madeleine-marguerite.fr">
-                hello@madeleine-marguerite.fr</a></li>
+            <li><strong>Email&nbsp;:</strong> <a href="mailto:bonjour@madeleineetmarguerite.fr">
+                bonjour@madeleineetmarguerite.fr</a></li>
             <li><strong>Basée à&nbsp;:</strong> Lyon&nbsp;— déplacements partout en France</li>
           </ul>
         </div>
 
         <!-- Colonne formulaire -->
-        <form class="contact-form" action="#" method="post">
+        <form class="contact-form" action="contact.php" method="post">
+
+          <input type="text" name="website" autocomplete="off" tabindex="-1"
+            style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+
           <div class="field">
             <label for="name">Votre nom</label>
             <input type="text" id="name" name="name" required />
@@ -442,10 +485,44 @@
   <footer class="site-footer">
 
     <ul class="footer-links">
-      <li><a href="#"><span class="icon">📧</span>Contact</a></li>
-      <li><a href="#"><span class="icon">⚖️</span>Mentions légales</a></li>
-      <li><a href="#"><span class="icon">📷</span>Instagram</a></li>
+      <li>
+        <a href="#contact">
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- Mail (outline) -->
+            <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />
+            <path d="M3 7l9 6 9-6" />
+          </svg>
+          <span class="visually-hidden">Contact</span><span aria-hidden="true">Contact</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="mentions.html" target="_blank" rel="noopener noreferrer">
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- Balance (mentions légales) -->
+            <path d="M12 3v4m0 0h6m-6 0H6" />
+            <path d="M7 9l-4 3 4 3 4-3-4-3z" />
+            <path d="M17 9l-4 3 4 3 4-3-4-3z" />
+            <path d="M12 7v10" />
+            <path d="M8 21h8" />
+          </svg>
+          <span class="visually-hidden">Mentions légales</span><span aria-hidden="true">Mentions légales</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.instagram.com/madeleineetmarguerite.photo/" target="_blank" rel="noopener noreferrer">
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- Instagram (outline) -->
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+            <circle cx="12" cy="12" r="4.2" />
+            <circle cx="17.2" cy="6.8" r="1.2" />
+          </svg>
+          <span class="visually-hidden">Instagram</span><span aria-hidden="true">Instagram</span>
+        </a>
+      </li>
     </ul>
+
 
     <p class="footer-copy">© <span id="brand">Madeleine&nbsp;&amp;&nbsp;Marguerite</span> · <span id="year">2025</span>
     </p>
@@ -453,6 +530,7 @@
 
   </footer>
 
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>

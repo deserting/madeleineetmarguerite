@@ -1,0 +1,255 @@
+/* Admin Sesame — styles dédiés (scope: body.se)
+   Dépend uniquement de ../css/variables.css
+*/
+
+:root {
+  --se-bg: #0b0b0b;
+  --se-surface: #121212;
+  --se-line: rgba(255,255,255,.12);
+  --se-text: var(--color-text);
+  --se-accent: var(--color-accent);
+  --se-accent-alt: var(--color-accent-alt);
+  --se-radius: var(--radius-sm);
+}
+
+body.se {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--se-text);
+  background: var(--se-bg);
+  padding: 5vh 16px 8vh;
+}
+
+.se .wrap {
+  width: min(1100px, 96%);
+  margin: 0 auto;
+}
+
+/* Titres & header */
+.se h1, .se h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.se h1 { font-size: clamp(1.6rem, 2.2vw + 1rem, 2.2rem); margin: 0 0 1rem; }
+.se h2 { font-size: 1.2rem; margin-top: 2rem; }
+
+/* Topbar actions */
+.se .topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem;
+}
+.se .topbar a {
+  color: var(--se-accent-alt);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+.se .topbar a:hover { color: var(--se-accent); }
+
+/* Cartes / panneaux */
+.se .card {
+  background: var(--se-surface);
+  border: 1px solid var(--se-line);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+/* Messages */
+.se .notice {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .5rem 1rem;
+  padding: .9rem 1rem;
+  border: 1px solid;
+  border-radius: var(--se-radius);
+  background: #fff;
+  color: #111;
+  margin: 12px 0;
+}
+.se .notice.is-good { border-color: #0a6; background: #eafff1; }
+.se .notice.is-bad  { border-color: #b3261e; background: #ffeeee; }
+.se .notice strong { font-weight: 600; }
+
+/* Formulaires */
+.se form { margin: .5rem 0 1rem; }
+.se label { display: inline-block; margin: 6px 8px 6px 0; }
+.se input[type="text"],
+.se input[type="password"],
+.se input[type="file"] {
+  padding: .6rem .75rem;
+  background: #fff;
+  color: #111;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: var(--se-radius);
+  font-size: .98rem;
+}
+.se input[type="checkbox"] { transform: translateY(1px); }
+
+.se button,
+.se .btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .4rem;
+  padding: .65rem .9rem;
+  background: var(--se-accent);
+  color: #1a1a1a;
+  border: 0;
+  border-radius: var(--se-radius);
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(212,163,115,.22);
+  transition: transform 150ms var(--ease-standard), background 150ms var(--ease-standard), box-shadow 150ms var(--ease-standard);
+}
+.se button:hover,
+.se .btn:hover {
+  background: #e8b584;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,163,115,.3);
+}
+
+/* Tableau des galeries */
+.se table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--se-surface);
+  border: 1px solid var(--se-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.se th, .se td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--se-line);
+  text-align: left;
+  font-size: .95rem;
+}
+.se th { background: rgba(255,255,255,.04); font-weight: 600; }
+.se tr:hover td { background: rgba(255,255,255,.03); }
+
+/* Détails / formulaire création */
+.se details {
+  border: 1px solid var(--se-line);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+  background: var(--se-surface);
+}
+.se details[open] { box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.se summary {
+  cursor: pointer; list-style: none; font-weight: 600;
+}
+.se summary::-webkit-details-marker { display: none; }
+
+/* Grille des vignettes (édition) */
+.se .thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;/* Admin Sesame — styles dédiés (scope: body.se)
+   Dépend de ../css/variables.css
+*/
+:root {
+  --se-bg: #0b0b0b;
+  --se-surface: #121212;
+  --se-line: rgba(255,255,255,.12);
+  --se-text: var(--color-text);
+  --se-accent: var(--color-accent);
+  --se-accent-alt: var(--color-accent-alt);
+  --se-radius: var(--radius-sm);
+}
+
+body.se {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--se-text);
+  background: var(--se-bg);
+  padding: 5vh 16px 8vh;
+}
+
+.se .wrap { width: min(1100px, 96%); margin: 0 auto; }
+
+.se h1, .se h2 { font-weight: 600; letter-spacing:.01em; }
+.se h1 { font-size: clamp(1.6rem, 2.2vw + 1rem, 2.2rem); margin: 0 0 1rem; }
+.se h2 { font-size: 1.2rem; margin-top: 2rem; }
+
+/* Topbar */
+.se .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+.se .topbar a { color: var(--se-accent-alt); text-decoration:none; border-bottom:1px solid currentColor; }
+.se .topbar a:hover { color: var(--se-accent); }
+
+/* Cards / panneaux */
+.se .card { background: var(--se-surface); border:1px solid var(--se-line); border-radius: var(--radius-md); padding: 12px 14px; box-shadow:0 8px 24px rgba(0,0,0,.18); }
+
+/* Notices */
+.se .notice { display:grid; grid-template-columns:1fr auto; gap:.5rem 1rem; padding:.9rem 1rem; border:1px solid; border-radius: var(--se-radius); background:#fff; color:#111; margin:12px 0; }
+.se .notice.is-good { border-color:#0a6; background:#eafff1; }
+.se .notice.is-bad  { border-color:#b3261e; background:#ffeeee; }
+.se .notice strong { font-weight:600; }
+
+/* Formulaires */
+.se form { margin:.5rem 0 1rem; }
+.se label { display:inline-block; margin:6px 8px 6px 0; }
+.se input[type="text"], .se input[type="password"], .se input[type="file"] {
+  padding:.6rem .75rem; background:#fff; color:#111; border:1px solid rgba(0,0,0,.15); border-radius: var(--se-radius); font-size:.98rem;
+}
+.se input[type="checkbox"] { transform: translateY(1px); }
+
+.se button, .se .btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
+  padding:.65rem .9rem; background: var(--se-accent); color:#1a1a1a;
+  border:0; border-radius: var(--se-radius); cursor:pointer; font-weight:600;
+  box-shadow:0 4px 12px rgba(212,163,115,.22);
+  transition: transform var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.se button:hover, .se .btn:hover { background:#e8b584; transform: translateY(-2px); box-shadow:0 6px 20px rgba(212,163,115,.3); }
+.se .btn-danger { background:#efc3c3; color:#5a0d0d; }
+.se .btn-danger:hover { background:#f0a9a9; }
+
+/* Tableau */
+.se table { width:100%; border-collapse:collapse; background: var(--se-surface); border:1px solid var(--se-line); border-radius: var(--radius-md); overflow:hidden; }
+.se th, .se td { padding:10px 12px; border-bottom:1px solid var(--se-line); text-align:left; font-size:.95rem; }
+.se th { background: rgba(255,255,255,.04); font-weight:600; }
+.se tr:hover td { background: rgba(255,255,255,.03); }
+
+/* Details */
+.se details { border:1px solid var(--se-line); border-radius: var(--radius-md); padding:8px 10px; background: var(--se-surface); }
+.se details[open] { box-shadow:0 8px 24px rgba(0,0,0,.18); }
+.se summary { cursor:pointer; list-style:none; font-weight:600; }
+.se summary::-webkit-details-marker { display:none; }
+
+/* Grille de vignettes */
+.se .thumbs { display:grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap:10px; }
+.se figure.thumb { margin:0; padding:6px; border:1px solid var(--se-line); border-radius: var(--se-radius); background: rgba(255,255,255,.03); }
+.se figure.thumb img, .se figure.thumb .ph { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; background:#fafafa; color:#777; }
+.se .thumb-actions { display:flex; gap:6px; justify-content:space-between; margin-top:6px; }
+.se .muted { opacity:.75; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .se th:nth-child(3), .se td:nth-child(3) { display:none; }
+}
+
+}
+.se figure.thumb {
+  margin: 0; padding: 6px;
+  border: 1px solid var(--se-line);
+  border-radius: var(--se-radius);
+  background: rgba(255,255,255,.03);
+}
+.se figure.thumb img,
+.se figure.thumb .ph {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  background: #fafafa;
+  color: #777;
+}
+.se .thumb-actions {
+  display: flex; gap: 6px; justify-content: space-between; margin-top: 6px;
+}
+.se .btn-danger { background: #efc3c3; color: #5a0d0d; }
+.se .btn-danger:hover { background: #f0a9a9; }
+
+/* Liens utilitaires */
+.se .muted { opacity: .75; }
+
+/* Responsif */
+@media (max-width: 720px) {
+  .se th:nth-child(3), .se td:nth-child(3) { display: none; } /* cache "identifiant client" si serré */
+}

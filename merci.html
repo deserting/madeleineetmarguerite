@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci ! - Madeleine & Marguerite</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .merci-container {
+            background: var(--color-surface);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            max-width: 600px;
+        }
+        .merci-container h1 {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+        .merci-container p {
+            margin-bottom: var(--space-lg);
+            color: var(--color-text);
+        }
+        .btn-back {
+            display: inline-block;
+            padding: .75rem 1.5rem;
+            background: var(--color-accent);
+            color: var(--color-text-dark);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background .3s;
+        }
+        .btn-back:hover {
+            background: #e8b584;
+        }
+    </style>
+</head>
+<body>
+    <div class="merci-container flow">
+        <h1>Merci&nbsp;!</h1>
+        <p>Votre message a bien été envoyé. Je reviendrai vers vous dans les plus brefs délais.</p>
+        <a href="index.html" class="btn-back">Retour à l'accueil</a>
+    </div>
+</body>
+</html>
