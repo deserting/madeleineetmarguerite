@@ -14,6 +14,10 @@ $name    = trim(strip_tags($_POST["name"] ?? ""));
 $email   = filter_var(trim($_POST["email"] ?? ""), FILTER_SANITIZE_EMAIL);
 $message = trim(strip_tags($_POST["message"] ?? ""));
 
+// Nettoyage supplémentaire : empêche l'injection d'en-têtes via des retours à la ligne
+$name  = str_replace(["\r", "\n"], " ", $name);
+$email = str_replace(["\r", "\n"], "", $email);
+
 // 2) Validation
 if ($name === "" || $message === "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
   header("Location: index.html?status=error"); exit;
