@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "qui font sourire",
       "qui font rire",
       "qui font pleurer",
-      "qui font battre le coeur",
+      "qui font battre le cœur",
       "qui font le quotidien",
       "qui font l'amour",
       "qui font la vie"
