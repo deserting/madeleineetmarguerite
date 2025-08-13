@@ -24,15 +24,15 @@ if ($name === "" || $message === "" || !filter_var($email, FILTER_VALIDATE_EMAIL
 }
 
 // 3) Préparation de l’e-mail
-$recipient = "bonjour@madeleine-marguerite.fr"; // ← ta vraie adresse
+$recipient = "bonjour@madeleineetmarguerite.fr"; // ← bonjour@madeleineetmarguerite.fr
 $subject   = "Nouveau message de $name via le site Madeleine & Marguerite";
 
 $body  = "Nom: $name\n";
 $body .= "Email: $email\n\n";
 $body .= "Message:\n$message\n";
 
-// From = ton domaine (meilleure délivrabilité) ; l’expéditeur réel en Reply-To
-$headers  = "From: Madeleine & Marguerite <no-reply@madeleine-marguerite.fr>\r\n";
+// From = domaine madeleineetmarguerite.fr (meilleure délivrabilité) ; l’expéditeur réel en Reply-To
+$headers  = "From: Madeleine & Marguerite <no-reply@madeleineetmarguerite.fr>\r\n";
 $headers .= "Reply-To: $name <$email>\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
