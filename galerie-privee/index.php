@@ -9,12 +9,11 @@ function read_json($f,$fb=null){ return is_file($f) ? (json_decode(file_get_cont
 
 $c = cfg();
 $dirP = $c['dir_private'];
-$dirPub = $c['dir_public'];
 start_sess();
 
-$slug = $_SESSION['client_gallery'] ?? ''; // déjà connecté ?
-
+$slug = $_SESSION['client_gallery'] ?? '';
 $err = '';
+
 if($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='login'){
   csrf_check();
   $u = trim($_POST['user'] ?? '');
@@ -45,18 +44,13 @@ if(isset($_GET['logout'])){ unset($_SESSION['client_gallery']); header('Location
   <meta name="robots" content="noindex,nofollow">
   <title>Galerie privée</title>
 
-  <!-- EXACTEMENT comme la home pour la display font -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 
-  <!-- CSS du site (reprend la grille/typos/boutons identiques au portfolio) -->
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/style.css">
-
-  <!-- Mini-override spécifique galerie (login + micro-ajustements) -->
   <link rel="stylesheet" href="galerie-privee.css">
 
-  <!-- Lightbox -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 </head>
 <body>
@@ -66,38 +60,31 @@ if(isset($_GET['logout'])){ unset($_SESSION['client_gallery']); header('Location
     <h1 class="section-heading" style="margin-bottom:1rem;">Galerie privée</h1>
     <p class="intro">Entrez vos identifiants pour accéder à vos photos.</p>
     <?php if($err): ?><p class="notice is-error"><strong>Oups.</strong> <span><?=e($err)?></span></p><?php endif; ?>
-
     <form method="post" class="login-card">
-      <input type="hidden" name="csrf" value="<?=csrf_token()?>">
+      <input type="hidden" name="csrf" value="<?=csrf_token() ?>">
       <input type="hidden" name="action" value="login">
-
       <p class="field">
-        <label for="login-user">Identifiant</label>
-        <input id="login-user" name="user" required type="text" autocomplete="username">
+        <label>Identifiant</label>
+        <input name="user" required type="text" autocomplete="username">
       </p>
       <p class="field">
-        <label for="login-pass">Mot de passe</label>
-        <input id="login-pass" name="pass" type="password" autocomplete="current-password">
+        <label>Mot de passe</label>
+        <input name="pass" type="password" autocomplete="current-password">
       </p>
-      <p><button class="btn-primary" type="submit" style="width:100%">Se connecter</button></p>
+      <p><button class="btn-primary">Se connecter</button></p>
     </form>
-
 <?php else:
     $gdir = $dirP.'/'.$slug;
     $meta = read_json($gdir.'/meta.json', []);
     $photos = read_json($gdir.'/photos.json', []);
 ?>
-    <p class="logout"><a href="?logout=1">← Se déconnecter</a></p>
-    <h1 class="section-heading" style="margin-bottom:1rem;"><?=e($meta['title']??'Galerie')?></h1>
-    <p class="intro" style="margin-bottom:2rem;">Client · <?=e($meta['client_name']??'—')?></p>
-
+    <h1 class="section-heading" style="margin-bottom:1rem;color:var(--color-accent);"><?=e($meta['title']??'Galerie')?></h1>
+    <?php if(!empty($meta['intro_text'])): ?>
+      <p class="client-intro" style="text-align:center;"><?=nl2br(e($meta['intro_text']))?></p>
+    <?php endif; ?>
+    <p class="quality-note" style="text-align:center;"><em>Ces photos sont optimisées pour un affichage fluide. Pour obtenir l’intégralité des fichiers en haute définition, utilisez le lien de téléchargement ci-dessous.</em></p>
     <ul class="grid-gallery" role="list">
-      <?php
-      $hasAny = false;
-      foreach($photos as $p):
-        if(empty($p['visible']) || empty($p['grid']) || empty($p['hd'])) continue;
-        $hasAny = true;
-      ?>
+      <?php foreach($photos as $p): if(empty($p['visible']) || empty($p['grid']) || empty($p['hd'])) continue; ?>
         <li class="gallery-item">
           <a href="<?=e('../public/galeries/'.rawurlencode($slug).'/hd/'.basename($p['hd']))?>" class="glightbox" data-gallery="gal" aria-label="Agrandir la photo">
             <img src="<?=e('../public/galeries/'.rawurlencode($slug).'/grid/'.basename($p['grid']))?>" alt="" loading="lazy" width="400" height="400">
@@ -105,20 +92,15 @@ if(isset($_GET['logout'])){ unset($_SESSION['client_gallery']); header('Location
         </li>
       <?php endforeach; ?>
     </ul>
-
-    <?php if(!$hasAny): ?>
-      <p class="intro" style="margin-top:1.5rem">Les photos ne sont pas encore disponibles. Revenez un peu plus tard ✨</p>
-    <?php endif; ?>
-
     <?php if(!empty($meta['wetransfer_url'])): ?>
-      <div class="download-all">
-        <a class="btn-primary" href="<?=e($meta['wetransfer_url'])?>" target="_blank" rel="noopener">Télécharger tout</a>
+      <div class="download-all" style="text-align:center;">
+        <a class="btn-primary" style="display:inline-block;padding:0.75rem 1.5rem;text-align:center;" href="<?=e($meta['wetransfer_url'])?>" target="_blank" rel="noopener">Télécharger tout</a>
       </div>
     <?php endif; ?>
+    <p class="logout" style="text-align:center;margin-top:2rem;"><a href="?logout=1">← Se déconnecter</a></p>
 <?php endif; ?>
   </div>
 </main>
-
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>GLightbox({selector:'.glightbox', loop:true, touchNavigation:true});</script>
 </body>

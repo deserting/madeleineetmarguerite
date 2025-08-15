@@ -156,20 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Couleur du burger après le hero
   // Couleur du burger + affichage logo après le hero
-if (hero && logo) {
-  window.addEventListener(
-    "scroll",
-    () => {
-      const pastHero = hero.getBoundingClientRect().bottom <= 0;
-      btnBurger.classList.toggle("scrolled", pastHero);
-      logo.classList.toggle("is-scrolled", pastHero); // ← apparition logo
-    },
-    { passive: true }
-  );
-}
-
+  if (hero && logo) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const pastHero = hero.getBoundingClientRect().bottom <= 0;
+        btnBurger.classList.toggle("scrolled", pastHero);
+        logo.classList.toggle("is-scrolled", pastHero); // ← apparition logo
+      },
+      { passive: true }
+    );
+  }
 });
-
 
 // --------------------------------------------------
 // parallax minimal (rAF + IO pour ne calculer que si visible)
@@ -354,29 +352,40 @@ document.addEventListener("DOMContentLoaded", () => {
     ?.addEventListener("click", () => box.remove());
 });
 
-
 // ============ Typed Engine (factorisé) ============
 (function () {
   // Respecte la préférence "réduire les animations"
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+  function sleep(ms) {
+    return new Promise((r) => setTimeout(r, ms));
+  }
 
-  async function runTyped(el, words, {
-    typeDelay = 55,
-    eraseDelay = 35,
-    holdDelay = 1200,
-    loopDelay = 400,
-    initial = words[0] || ""
-  } = {}) {
+  async function runTyped(
+    el,
+    words,
+    {
+      typeDelay = 55,
+      eraseDelay = 35,
+      holdDelay = 1200,
+      loopDelay = 400,
+      initial = words[0] || "",
+    } = {}
+  ) {
     if (!el) return;
-    el.setAttribute('aria-live', 'polite');
+    el.setAttribute("aria-live", "polite");
 
-    if (reduced) { el.textContent = initial; return; }
+    if (reduced) {
+      el.textContent = initial;
+      return;
+    }
 
-    let i = 0, stop = false;
-    const onHide = () => { stop = true; };
-    window.addEventListener('pagehide', onHide, { once: true });
+    let i = 0,
+      stop = false;
+    const onHide = () => {
+      stop = true;
+    };
+    window.addEventListener("pagehide", onHide, { once: true });
 
     const typeWord = async (w) => {
       el.textContent = "";
@@ -409,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------- Instances --------
   // Hero
   runTyped(
-    document.getElementById('typed'),
+    document.getElementById("typed"),
     [
       "authentiques",
       "vrais",
@@ -421,16 +430,15 @@ document.addEventListener("DOMContentLoaded", () => {
       "qui font battre le cœur",
       "qui font le quotidien",
       "qui font l'amour",
-      "qui font la vie"
+      "qui font la vie",
     ],
     { initial: "authentiques" }
   );
 
   // Contact (point collé après le span dans le HTML)
   runTyped(
-    document.getElementById('typed-contact'),
-    ["vraies","authentiques","sincères","lumineuses"],
+    document.getElementById("typed-contact"),
+    ["vraies", "authentiques", "sincères", "lumineuses"],
     { initial: "vraies" }
   );
 })();
-

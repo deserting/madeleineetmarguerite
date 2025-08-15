@@ -1079,6 +1079,39 @@ blockquote cite {
 
 /* Bouton primaire ré-utilisé (déjà défini) */
 
+/* feedback formulaire contact */
+.contact-status { color: var(--color-text); }
+.contact-status.is-ok { color: #138f65; }
+.contact-status.is-err { color: #c23028; }
+.contact-status.is-sending { opacity: .8; }
+
+/* Renforce la spécificité + look clair pour le retour formulaire */
+#contact .contact-status {
+  margin-top: .75rem;
+  padding: .6rem .8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  display: inline-block;
+}
+
+#contact .contact-status.is-ok {
+  color: #0f5132!important;
+  background: #d1e7dd;
+  border-color: #badbcc;
+}
+
+#contact .contact-status.is-err {
+  color: #842029;
+  background: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+#contact .contact-status.is-sending {
+  opacity: .9;
+}
+
+
+
 
 /***************************************************
   14. Galerie privée – mot-de-passe final
@@ -1274,7 +1307,9 @@ blockquote cite {
 }
 
 
-/* --- Notice formulaire --- */
+/***************************************************
+  16. Validation du formulaire de contact
+***************************************************/
 .notice {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -1298,3 +1333,27 @@ blockquote cite {
 
 /* pas de style focus visible pour .notice (on laisse propre à l’écran) */
 .notice:focus { outline: none; }
+
+/* Contact — statut (succès / erreur / envoi) — priorité maximale */
+#contact #contact-status.contact-status.is-ok {
+  color: #0f5132 !important;
+  background: #d1e7dd;
+  border-color: #badbcc;
+}
+
+#contact #contact-status.contact-status.is-err {
+  color: #842029 !important;
+  background: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+#contact #contact-status.contact-status.is-sending {
+  opacity: .95;
+}
+
+/* Fade-out discret du message de succès */
+#contact #contact-status.contact-status.is-ok.fade-out {
+  animation: cs-fade 420ms ease forwards;
+}
+@keyframes cs-fade { to { opacity: 0; transform: translateY(-2px); } }
+

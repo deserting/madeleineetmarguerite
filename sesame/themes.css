@@ -1,0 +1,64 @@
+/* sesame/themes.css — grille + états upload */
+
+.grid-tiles{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap:16px;
+}
+
+.tile{
+  border:1px solid var(--se-line);
+  border-radius: var(--radius-sm);
+  background:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+  padding:12px;
+  transition: box-shadow var(--duration-fast) var(--ease-standard),
+             transform var(--duration-fast) var(--ease-standard);
+}
+.tile:hover{ transform: translateY(-1px); box-shadow:0 12px 26px rgba(0,0,0,.08); }
+
+.tile .thumb{
+  position:relative;
+  border:1px solid var(--se-line);
+  border-radius: var(--radius-sm);
+  overflow:hidden;
+  aspect-ratio: 4/3;
+  background:#f6f6f6;
+  margin-bottom:.6rem;
+}
+.tile .thumb img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition: opacity .2s ease;
+}
+.tile .thumb.is-loading img{ opacity:.4; }
+
+.tile .spinner{
+  position:absolute; inset:0; display:grid; place-items:center;
+  background:linear-gradient( to bottom, rgba(255,255,255,.65), rgba(255,255,255,.5) );
+}
+.tile .spinner::after{
+  content:""; width:26px; height:26px; border-radius:50%;
+  border:3px solid rgba(0,0,0,.15);
+  border-top-color: var(--color-accent);
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+.tile .tile-meta{
+  display:flex; flex-direction:column; gap:.2rem; margin-bottom:.4rem;
+}
+.tile .tile-meta .muted{ opacity:.7; font-size:.92rem; }
+
+.tile .uploader input[type="file"]{
+  width:100%;
+}
+
+/* états rapides */
+.tile.success{ box-shadow: 0 0 0 2px #d1e7dd inset, 0 8px 18px rgba(0,0,0,.05); }
+.tile.error  { box-shadow: 0 0 0 2px #f8d7da inset, 0 8px 18px rgba(0,0,0,.05); }
+
+/* Cache vraiment tout élément portant [hidden] */
+[hidden] { display: none !important; }
+
+/* État visuel pendant chargement (déjà utilisé par ton JS) */
+.thumb.is-loading img { opacity: .4; }

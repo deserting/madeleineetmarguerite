@@ -1,47 +1,77 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-  header("Location: index.html"); exit;
+// contact.php
+
+/***** CONFIG À ADAPTER *****/
+$to      = 'bonjour@madeleineetmarguerite.fr'; // boîte de réception
+$subject = 'Nouveau message depuis le site Madeleine & Marguerite';
+$from    = 'no-reply@madeleineetmarguerite.fr'; // expéditeur technique (même domaine !) 
+/***************************/
+
+header('X-Content-Type-Options: nosniff');
+
+function is_ajax() {
+  return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'fetch')
+      || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false);
+}
+function out_json($arr){
+  header('Content-Type: application/json; charset=utf-8');
+  echo json_encode($arr, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+  exit;
+}
+function clean($s){ return trim(filter_var((string)$s, FILTER_SANITIZE_STRING)); }
+function valid_email($e){ return (bool)filter_var($e, FILTER_VALIDATE_EMAIL); }
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  if (is_ajax()) out_json(['ok'=>false, 'error'=>'Méthode non autorisée']);
+  http_response_code(405);
+  echo 'Méthode non autorisée';
+  exit;
 }
 
-// 0) Honeypot (champ invisible côté HTML : name="website")
-if (!empty($_POST["website"])) {
-  // bot détecté → fait comme si tout allait bien
-  header("Location: merci.html"); exit;
+// Honeypot anti-spam
+if (!empty($_POST['website'] ?? '')) {
+  if (is_ajax()) out_json(['ok'=>true]); // on fait semblant d’avoir réussi
+  echo 'Merci !';
+  exit;
 }
 
-// 1) Récup & nettoyage
-$name    = trim(strip_tags($_POST["name"] ?? ""));
-$email   = filter_var(trim($_POST["email"] ?? ""), FILTER_SANITIZE_EMAIL);
-$message = trim(strip_tags($_POST["message"] ?? ""));
+// Champs
+$name    = clean($_POST['name'] ?? '');
+$email   = trim($_POST['email'] ?? '');
+$message = trim($_POST['message'] ?? '');
 
-// Nettoyage supplémentaire : empêche l'injection d'en-têtes via des retours à la ligne
-$name  = str_replace(["\r", "\n"], " ", $name);
-$email = str_replace(["\r", "\n"], "", $email);
-
-// 2) Validation
-if ($name === "" || $message === "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  header("Location: index.html?status=error"); exit;
+if ($name === '' || $message === '' || !valid_email($email)) {
+  $err = "Merci de renseigner un nom, un e‑mail valide et un message.";
+  if (is_ajax()) out_json(['ok'=>false, 'error'=>$err]);
+  echo $err;
+  exit;
 }
 
-// 3) Préparation de l’e-mail
-$recipient = "bonjour@madeleineetmarguerite.fr"; // ← bonjour@madeleineetmarguerite.fr
-$subject   = "Nouveau message de $name via le site Madeleine & Marguerite";
+// Sécurité : limite la taille du message
+if (mb_strlen($message) > 5000) {
+  $err = "Message trop long.";
+  if (is_ajax()) out_json(['ok'=>false, 'error'=>$err]);
+  echo $err;
+  exit;
+}
 
-$body  = "Nom: $name\n";
-$body .= "Email: $email\n\n";
-$body .= "Message:\n$message\n";
+// Prépare l’e-mail
+$body = "Nom: {$name}\nEmail: {$email}\nIP: ".($_SERVER['REMOTE_ADDR'] ?? '???')."\n\nMessage:\n{$message}\n";
 
-// From = domaine madeleineetmarguerite.fr (meilleure délivrabilité) ; l’expéditeur réel en Reply-To
-$headers  = "From: Madeleine & Marguerite <no-reply@madeleineetmarguerite.fr>\r\n";
-$headers .= "Reply-To: $name <$email>\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers = [];
+$headers[] = 'MIME-Version: 1.0';
+$headers[] = 'Content-Type: text/plain; charset=UTF-8';
+$headers[] = 'From: Madeleine & Marguerite <'.$from.'>';
+$headers[] = 'Reply-To: '.$email;
+$headers[] = 'X-Mailer: PHP/'.phpversion();
 
-// 4) Envoi (décommente en prod si mail() dispo ; sinon configure SMTP)
-$ok = true; // $ok = mail($recipient, $subject, $body, $headers);
+$ok = @mail($to, '=?UTF-8?B?'.base64_encode($subject).'?=', $body, implode("\r\n", $headers));
 
 if ($ok) {
-  header("Location: merci.html"); exit;
+  if (is_ajax()) out_json(['ok'=>true]);
+  echo "Merci ! Votre message a bien été envoyé.";
 } else {
-  header("Location: index.html?status=send_error"); exit;
+  $err = "L’envoi a échoué. Réessayez plus tard ou écrivez-moi à ".$to;
+  if (is_ajax()) out_json(['ok'=>false, 'error'=>$err]);
+  echo $err;
 }

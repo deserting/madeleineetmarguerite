@@ -11,7 +11,7 @@ function write_json($f,$arr){ $dir=dirname($f); if(!is_dir($dir)) mkdir($dir,077
 function ensure_dirs(){ $c=cfg(); foreach ([$c['dir_private'],$c['dir_public']] as $d){ if(!is_dir($d)) mkdir($d,0775,true); } }
 function deltree($dir){ if(!is_dir($dir)) return; $it=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir,FilesystemIterator::SKIP_DOTS),RecursiveIteratorIterator::CHILD_FIRST); foreach($it as $f){ $f->isDir()? rmdir($f->getRealPath()) : unlink($f->getRealPath()); } rmdir($dir); }
 
-// Conversion vers WebP (Imagick si dispo, sinon GD)
+// Conversion → WebP (Imagick si dispo, sinon GD)
 function to_webp_variant($src,$dest,$maxLong){
   if(class_exists('Imagick')){
     $im=new Imagick($src); $im->setImageOrientation(Imagick::ORIENTATION_TOPLEFT);
@@ -31,7 +31,7 @@ function to_webp_variant($src,$dest,$maxLong){
 ensure_dirs(); $c=cfg(); $dirP=$c['dir_private']; $dirPub=$c['dir_public'];
 start_sess(); $action=$_POST['action']??$_GET['action']??''; $err=$_SESSION['err']??''; $ok=$_SESSION['ok']??''; unset($_SESSION['err'],$_SESSION['ok']);
 
-// LOGIN clair
+// Auth
 if($action==='login'){
   csrf_check(); $u=trim($_POST['user']??''); $p=(string)($_POST['pass']??'');
   if($u===$c['admin_user'] && $p===$c['admin_pass_plain']){ $_SESSION['is_admin']=true; header('Location: '.base_href().'/index.php'); exit; }
@@ -39,29 +39,60 @@ if($action==='login'){
 }
 if($action==='logout'){ session_unset(); session_destroy(); header('Location: '.base_href().'/index.php'); exit; }
 
-// CRUD galerie
+// CREATE
 if($action==='create' && is_admin()){
-  csrf_check(); $title=trim($_POST['title']??''); $client=trim($_POST['client']??'');
-  $slug=trim($_POST['slug']??''); if($slug===''){ $slug=strtolower(preg_replace('~[^a-z0-9\\-]+~','-', iconv('UTF-8','ASCII//TRANSLIT',$title?:$client?:'galerie'))); $slug=trim($slug,'-'); }
-  $client_user=trim($_POST['client_user']??''); $client_pass=trim($_POST['client_pass']??'');
-  $wtu=trim($_POST['wetransfer']??''); $published=!empty($_POST['published']);
+  csrf_check();
+  $title=trim($_POST['title']??'');
+  $slug=trim($_POST['slug']??'');
+  if($slug===''){ $slug=strtolower(preg_replace('~[^a-z0-9\\-]+~','-', iconv('UTF-8','ASCII//TRANSLIT',$title?:'galerie'))); $slug=trim($slug,'-'); }
+  $client_user=trim($_POST['client_user']??'');
+  $client_pass=trim($_POST['client_pass']??'');
+  $intro_text=trim($_POST['intro_text']??'');
+  $wtu=trim($_POST['wetransfer']??'');
+  $published=!empty($_POST['published']);
+
   $gdir="$dirP/$slug"; if(is_dir($gdir)){ $_SESSION['err']='Slug déjà existant'; header('Location: '.base_href().'/index.php'); exit; }
   mkdir($gdir,0775,true); mkdir("$gdir/originals",0775,true);
   foreach(['thumb','grid','hd'] as $d) mkdir("$dirPub/$slug/$d",0775,true);
-  $meta=[ 'slug'=>$slug,'title'=>$title,'client_name'=>$client,'client_user'=>$client_user,'client_pass_hash'=>$client_pass? password_hash($client_pass,PASSWORD_BCRYPT):null,'wetransfer_url'=>$wtu,'is_published'=>$published,'created_at'=>date('c') ];
-  write_json("$gdir/meta.json",$meta); write_json("$gdir/photos.json",[]);
-  $_SESSION['ok']='Galerie créée'; header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
+
+  $meta=[
+    'slug'=>$slug,
+    'title'=>$title,
+    'client_user'=>$client_user,
+    'client_pass_hash'=>$client_pass? password_hash($client_pass,PASSWORD_BCRYPT):null,
+    'client_pass_plain'=>$client_pass ?: null, // affichage clair en édition
+    'intro_text'=>$intro_text,
+    'wetransfer_url'=>$wtu,
+    'is_published'=>$published,
+    'created_at'=>date('c')
+  ];
+  write_json("$gdir/meta.json",$meta);
+  write_json("$gdir/photos.json",[]);
+  $_SESSION['ok']='Galerie créée';
+  header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// SAVE META
 if($action==='save-meta' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $gdir="$dirP/$slug"; $meta=read_json("$gdir/meta.json",[]);
   if(!$meta){ $_SESSION['err']='Galerie introuvable'; header('Location: '.base_href().'/index.php'); exit; }
-  $meta['title']=trim($_POST['title']??$meta['title']); $meta['client_name']=trim($_POST['client']??($meta['client_name']??''));
+
+  $meta['title']=trim($_POST['title']??$meta['title']);
   $meta['client_user']=trim($_POST['client_user']??($meta['client_user']??''));
-  $pwd=trim($_POST['client_pass']??''); if($pwd!==''){ $meta['client_pass_hash']=password_hash($pwd,PASSWORD_BCRYPT); }
-  if(!empty($_POST['clear_pass'])) $meta['client_pass_hash']=null;
-  $meta['wetransfer_url']=trim($_POST['wetransfer']??''); $meta['is_published']=!empty($_POST['published']);
-  write_json("$gdir/meta.json",$meta); $_SESSION['ok']='Méta enregistrées'; header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
+  $pwd=trim($_POST['client_pass']??'');
+  if($pwd!==''){ $meta['client_pass_hash']=password_hash($pwd,PASSWORD_BCRYPT); $meta['client_pass_plain']=$pwd; }
+  if(!empty($_POST['clear_pass'])) { $meta['client_pass_hash']=null; $meta['client_pass_plain']=null; }
+
+  $meta['intro_text']=trim($_POST['intro_text']??($meta['intro_text']??''));
+  $meta['wetransfer_url']=trim($_POST['wetransfer']??'');
+  $meta['is_published']=!empty($_POST['published']);
+
+  write_json("$gdir/meta.json",$meta);
+  $_SESSION['ok']='Méta enregistrées';
+  header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// UPLOAD
 if($action==='upload' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $gdir="$dirP/$slug"; $meta=read_json("$gdir/meta.json",[]);
   if(!$meta){ $_SESSION['err']='Galerie introuvable'; header('Location: '.base_href().'/index.php'); exit; }
@@ -91,13 +122,15 @@ if($action==='upload' && is_admin()){
   $_SESSION['ok']="Upload terminé : $added ajoutée(s), $skipped ignorée(s) — ${dur}s";
   header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// GENERATE
 if($action==='generate' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $gdir="$dirP/$slug"; $meta=read_json("$gdir/meta.json",[]); $photos=read_json("$gdir/photos.json",[]);
   if(!$meta){ $_SESSION['err']='Galerie introuvable'; header('Location: '.base_href().'/index.php'); exit; }
   foreach(['thumb','grid','hd'] as $d) if(!is_dir($dirPub.'/'.$slug.'/'.$d)) mkdir($dirPub.'/'.$slug.'/'.$d,0775,true);
   $sizes=$c['sizes']; $batch=(int)$c['batch']; if($batch<1) $batch=10;
   $done=0; $already=0; $failed=0; $start=microtime(true);
-  foreach($photos as &$p){ if($done>=$batch) break; if(!empty($p['variants_ready'])){ $already++; continue; }
+  foreach($photos as &$p){ if($done>>= $batch) break; if(!empty($p['variants_ready'])){ $already++; continue; }
     $id=$p['id']; $origPath="$gdir/originals/".$p['file']; if(!is_file($origPath)){ $failed++; continue; }
     $thumbRel="thumb/$id.webp"; $gridRel="grid/$id.webp"; $hdRel="hd/$id.webp";
     $ok1=to_webp_variant($origPath, $dirPub.'/'.$slug.'/'.$thumbRel, $sizes['thumb']);
@@ -110,20 +143,26 @@ if($action==='generate' && is_admin()){
   write_json("$gdir/photos.json",$photos);
   $left = count(array_filter($photos, fn($x)=>empty($x['variants_ready'])));
   $dur = round((microtime(true)-$start),2);
-  $_SESSION['ok']="Génération : $done traité(s), $already déjà prêt(s), $failed échec(s), reste $left — ${dur}s";
+  $_SESSION['ok']="Génération : $done traité(s), $already prêt(s), $failed échec(s), reste $left — ${dur}s";
   header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// TOGGLE
 if($action==='toggle' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $pid=(string)$_POST['pid']; $gdir="$dirP/$slug"; $photos=read_json("$gdir/photos.json",[]);
   foreach($photos as &$p){ if($p['id']===$pid){ $p['visible']=!($p['visible']??true); break; } }
   unset($p); write_json("$gdir/photos.json",$photos); header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// MOVE
 if($action==='move' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $pid=(string)$_POST['pid']; $dir=(string)$_POST['dir']; $gdir="$dirP/$slug"; $photos=read_json("$gdir/photos.json",[]);
   $i=null; foreach($photos as $k=>$p){ if($p['id']===$pid){ $i=$k; break; } }
   if($i!==null){ $j=$dir==='up'? $i-1 : $i+1; if($j>=0 && $j<count($photos)){ $tmp=$photos[$i]; $photos[$i]=$photos[$j]; $photos[$j]=$tmp; } }
   write_json("$gdir/photos.json",$photos); header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// DELETE PHOTO
 if($action==='del-photo' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $pid=(string)$_POST['pid']; $gdir="$dirP/$slug"; $photos=read_json("$gdir/photos.json",[]);
   $photos=array_values(array_filter($photos, fn($p)=>$p['id']!==$pid)); write_json("$gdir/photos.json",$photos);
@@ -131,49 +170,76 @@ if($action==='del-photo' && is_admin()){
   foreach(glob($gdir.'/originals/'.$pid.'.*') as $f) @unlink($f);
   header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit;
 }
+
+// DELETE GALLERY
 if($action==='del-gallery' && is_admin()){
   csrf_check(); $slug=(string)$_POST['slug']; $confirm=trim($_POST['confirm']??''); if($confirm!==$slug){ $_SESSION['err']='Confirmation incorrecte'; header('Location: '.base_href()."/index.php?edit=".rawurlencode($slug)); exit; }
   deltree($dirP.'/'.$slug); deltree($dirPub.'/'.$slug);
   $_SESSION['ok']='Galerie supprimée'; header('Location: '.base_href().'/index.php'); exit;
 }
-
 ?><!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Sesame · Admin</title>
-  <!-- Tokens -->
   <link rel="stylesheet" href="../css/variables.css">
-  <!-- Styles dédiés Admin -->
   <link rel="stylesheet" href="sesame.css">
+  <link rel="stylesheet" href="sesame-easter.css">
+  <script src="sesame-easter.js" defer></script>
+
 </head>
 <body class="se">
 <div class="wrap">
 
 <?php if(!is_admin()): ?>
-  <h1>Connexion</h1>
-  <?php if($ok): ?><p class="notice is-good"><strong>OK.</strong> <span><?=e($ok)?></span></p><?php endif; ?>
-  <?php if($err): ?><p class="notice is-bad"><strong>Oups.</strong> <span><?=e($err)?></span></p><?php endif; ?>
-  <form method="post" action="<?=e(base_href())?>/index.php" class="card" style="max-width:480px">
-    <input type="hidden" name="action" value="login"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-    <p><label>Identifiant<br><input name="user" required autocomplete="username" style="width:100%"></label></p>
-    <p><label>Mot de passe<br><input name="pass" type="password" required autocomplete="current-password" style="width:100%"></label></p>
-    <p><button class="btn">Se connecter</button></p>
-  </form>
+  <main class="py-24" style="min-height:100vh">
+    <div class="container">
+      <h1 class="section-heading" style="margin-bottom:1rem;">Accès photographe</h1>
+      <p class="intro">Identifiez‑vous pour créer et gérer vos galeries privées.</p>
 
+      <?php if($ok): ?>
+        <p class="notice is-good"><strong>OK.</strong> <span><?=e($ok)?></span></p>
+      <?php endif; ?>
+      <?php if($err): ?>
+        <p class="notice is-error"><strong>Oups.</strong> <span><?=e($err)?></span></p>
+      <?php endif; ?>
+
+      <form method="post" action="<?=e(base_href())?>/index.php" class="login-card">
+        <input type="hidden" name="action" value="login">
+        <input type="hidden" name="csrf" value="<?=csrf_token()?>">
+
+        <p class="field">
+          <label>Identifiant</label>
+          <input name="user" required type="text" autocomplete="username" placeholder="ex. margouille">
+        </p>
+
+        <p class="field">
+          <label>Mot de passe</label>
+          <input name="pass" type="password" required autocomplete="current-password" placeholder="Votre mot de passe">
+        </p>
+
+        <p><button class="btn-primary" type="submit">Se connecter</button></p>
+        <p class="logout" style="margin-top:.5rem"><a href="../index.html" target="_blank">← Retour au site</a></p>
+      </form>
+    </div>
+  </main>
 <?php else: $edit = $_GET['edit'] ?? ''; ?>
+
   <?php if(!$edit): ?>
     <div class="topbar">
-      <h1>Galeries</h1>
-      <div>
-        <a href="../galerie-privee/" target="_blank">→ Page de login publique</a>
-        ·
-        <form method="post" action="<?=e(base_href())?>/index.php" style="display:inline">
-          <input type="hidden" name="action" value="logout"><button class="btn">Déconnexion</button>
-        </form>
-      </div>
-    </div>
+  <h1>Galeries</h1>
+  <div>
+    <a href="themes.php">🎨 Apparence du site</a>
+    ·
+    <a href="../galerie-privee/" target="_blank">→ Page de login publique</a>
+    ·
+    <form method="post" action="<?=e(base_href())?>/index.php" style="display:inline">
+      <input type="hidden" name="action" value="logout"><button class="btn">Déconnexion</button>
+    </form>
+  </div>
+</div>
+
     <?php if($ok): ?><p class="notice is-good"><strong>OK.</strong> <span><?=e($ok)?></span></p><?php endif; ?>
     <?php if($err): ?><p class="notice is-bad"><strong>Oups.</strong> <span><?=e($err)?></span></p><?php endif; ?>
 
@@ -181,12 +247,12 @@ if($action==='del-gallery' && is_admin()){
       <summary><strong>+ Nouvelle galerie</strong></summary>
       <form method="post" action="<?=e(base_href())?>/index.php" style="margin-top:12px">
         <input type="hidden" name="action" value="create"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
+        <p><label>Titre · <input name="title" required></label></p>
+        <p><label>Slug (auto si vide) · <input name="slug" placeholder="ex: martine-martine"></label></p>
         <p>
-          <label>Titre · <input name="title" required></label>
-          <label>Client · <input name="client"></label>
-        </p>
-        <p>
-          <label>Slug (auto si vide) · <input name="slug" placeholder="ex: martine-martine"></label>
+          <label>Texte d’introduction<br>
+            <textarea name="intro_text" rows="3" style="min-width:520px" placeholder="Un petit mot pour vos clients… (optionnel)"></textarea>
+          </label>
         </p>
         <p>
           <label>Identifiant client · <input name="client_user" placeholder="ex: martine"></label>
@@ -202,11 +268,10 @@ if($action==='del-gallery' && is_admin()){
 
     <?php $rows=[]; foreach(glob($dirP.'/*/meta.json') as $mf){ $m=read_json($mf,[]); if($m) $rows[]=$m; } usort($rows, fn($a,$b)=>strcmp($b['created_at']??'',$a['created_at']??'')); ?>
     <table>
-      <tr><th>Titre</th><th>Client</th><th>Identifiant client</th><th>Slug</th><th>Statut</th><th></th></tr>
+      <tr><th>Titre</th><th>Identifiant client</th><th>Slug</th><th>Statut</th><th></th></tr>
       <?php foreach($rows as $g): $slug=$g['slug']; ?>
         <tr>
           <td><?=e($g['title']??'')?></td>
-          <td><?=e($g['client_name']??'')?></td>
           <td><?=e($g['client_user']??'')?></td>
           <td><code><?=e($slug)?></code></td>
           <td><?=!empty($g['is_published'])?'Publiée':'Brouillon'?></td>
@@ -229,15 +294,24 @@ if($action==='del-gallery' && is_admin()){
     <form method="post" action="<?=e(base_href())?>/index.php" class="card">
       <input type="hidden" name="action" value="save-meta"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
       <input type="hidden" name="slug" value="<?=e($slug)?>">
+      <p><label>Titre · <input name="title" value="<?=e($meta['title']??'')?>"></label></p>
       <p>
-        <label>Titre · <input name="title" value="<?=e($meta['title']??'')?>"></label>
-        <label>Client · <input name="client" value="<?=e($meta['client_name']??'')?>"></label>
+        <label>Texte d’introduction<br>
+          <textarea name="intro_text" rows="3" style="min-width:520px" placeholder="Un petit mot pour vos clients… (optionnel)"><?= e($meta['intro_text'] ?? '') ?></textarea>
+        </label>
       </p>
       <p>
         <label>Identifiant client · <input name="client_user" value="<?=e($meta['client_user']??'')?>"></label>
-        <label>Nouveau mot de passe client · <input name="client_pass" placeholder="(laisser vide pour conserver)"></label>
+        <label>Nouveau mot de passe · <input name="client_pass" placeholder="(laisser vide pour conserver)"></label>
         <label><input type="checkbox" name="clear_pass" value="1"> Supprimer le mot de passe</label>
       </p>
+      <?php if(array_key_exists('client_pass_plain',$meta) && $meta['client_pass_plain']!==null && $meta['client_pass_plain']!==''): ?>
+        <p class="muted">
+          Mot de passe actuel (mémo)&nbsp;:
+          <input type="text" readonly value="<?= e($meta['client_pass_plain']) ?>" style="min-width:260px" onclick="this.select()">
+          <button type="button" class="btn" onclick="navigator.clipboard.writeText('<?= e($meta['client_pass_plain']) ?>')">Copier</button>
+        </p>
+      <?php endif; ?>
       <p>
         <label>WeTransfer · <input name="wetransfer" style="min-width:420px" value="<?=e($meta['wetransfer_url']??'')?>"></label>
         <label><input type="checkbox" name="published" <?=!empty($meta['is_published'])?'checked':''?>> Publiée</label>
@@ -247,18 +321,16 @@ if($action==='del-gallery' && is_admin()){
 
     <h2>1) Téléverser des photos (originaux)</h2>
     <form method="post" action="<?=e(base_href())?>/index.php" enctype="multipart/form-data" class="card">
-      <input type="hidden" name="action" value="upload"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-      <input type="hidden" name="slug" value="<?=e($slug)?>">
+      <input type="hidden" name="action" value="upload"><input type="hidden" name="csrf" value="<?=csrf_token()?>"><input type="hidden" name="slug" value="<?=e($slug)?>">
       <input type="file" name="photos[]" multiple accept="image/*" required>
-      <p class="muted">Astuce : uploade par paquets (ex. 50 par 50) pour aller plus vite et éviter les erreurs.</p>
+      <p class="muted">Astuce : uploade par paquets (ex. 50 par 50) pour éviter les erreurs.</p>
       <button class="btn">Téléverser</button>
     </form>
 
     <h2>2) Générer les variantes (par lot)</h2>
     <p>En attente : <strong><?= (int)$pending ?></strong> — clique plusieurs fois si besoin (<?= (int)$c['batch'] ?> max par clic).</p>
     <form method="post" action="<?=e(base_href())?>/index.php" class="card">
-      <input type="hidden" name="action" value="generate"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-      <input type="hidden" name="slug" value="<?=e($slug)?>">
+      <input type="hidden" name="action" value="generate"><input type="hidden" name="csrf" value="<?=csrf_token()?>"><input type="hidden" name="slug" value="<?=e($slug)?>">
       <button class="btn">Générer les variantes maintenant</button>
     </form>
 
@@ -271,21 +343,21 @@ if($action==='del-gallery' && is_admin()){
           <?php else: ?>
             <div class="ph">En attente</div>
           <?php endif; ?>
+
           <div class="thumb-actions">
             <form method="post" action="<?=e(base_href())?>/index.php">
-              <input type="hidden" name="action" value="move"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-              <input type="hidden" name="slug" value="<?=e($slug)?>"><input type="hidden" name="pid" value="<?=e($p['id'])?>">
+              <input type="hidden" name="action" value="move"><input type="hidden" name="csrf" value="<?=csrf_token()?>"><input type="hidden" name="slug" value="<?=e($slug)?>"><input type="hidden" name="pid" value="<?=e($p['id'])?>">
               <button class="btn" name="dir" value="up">↑</button>
               <button class="btn" name="dir" value="down">↓</button>
             </form>
+
             <form method="post" action="<?=e(base_href())?>/index.php">
-              <input type="hidden" name="action" value="toggle"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-              <input type="hidden" name="slug" value="<?=e($slug)?>"><input type="hidden" name="pid" value="<?=e($p['id'])?>">
+              <input type="hidden" name="action" value="toggle"><input type="hidden" name="csrf" value="<?=csrf_token()?>"><input type="hidden" name="slug" value="<?=e($slug)?>"><input type="hidden" name="pid" value="<?=e($p['id'])?>">
               <button class="btn"><?=!empty($p['visible'])?'Masquer':'Afficher'?></button>
             </form>
+
             <form method="post" action="<?=e(base_href())?>/index.php" onsubmit="return confirm('Supprimer cette photo ?')">
-              <input type="hidden" name="action" value="del-photo"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-              <input type="hidden" name="slug" value="<?=e($slug)?>"><input type="hidden" name="pid" value="<?=e($p['id'])?>">
+              <input type="hidden" name="action" value="del-photo"><input type="hidden" name="csrf" value="<?=csrf_token()?>"><input type="hidden" name="slug" value="<?=e($slug)?>"><input type="hidden" name="pid" value="<?=e($p['id'])?>">
               <button class="btn btn-danger">Supprimer</button>
             </form>
           </div>
@@ -295,8 +367,7 @@ if($action==='del-gallery' && is_admin()){
 
     <h2>Supprimer la galerie</h2>
     <form method="post" action="<?=e(base_href())?>/index.php" class="card" onsubmit="return confirm('Supprimer DÉFINITIVEMENT la galerie ?')">
-      <input type="hidden" name="action" value="del-gallery"><input type="hidden" name="csrf" value="<?=csrf_token()?>">
-      <input type="hidden" name="slug" value="<?=e($slug)?>">
+      <input type="hidden" name="action" value="del-gallery"><input type="hidden" name="csrf" value="<?=csrf_token()?>"><input type="hidden" name="slug" value="<?=e($slug)?>">
       <p>Tape <code><?=e($slug)?></code> pour confirmer : <input name="confirm" required></p>
       <button class="btn btn-danger">Supprimer définitivement</button>
     </form>

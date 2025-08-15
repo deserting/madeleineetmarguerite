@@ -1,0 +1,2503 @@
+
+
+====================
+INDEX.HTML
+====================
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="Photographe documentaire à Lyon — mariages, naissances, familles. Des images sensibles, naturelles et lumineuses.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Madeleine & Marguerite — Photographe documentaire à Lyon">
+  <meta property="og:description" content="Mariage, naissance, famille. Des souvenirs vrais, sans poses.">
+  <meta property="og:image" content="https://madeleineetmarguerite.fr/assets/img/hero.webp">
+  <meta property="og:url" content="https://madeleineetmarguerite.fr/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://madeleineetmarguerite.fr/">
+
+
+
+  <title>Madeleine &amp; Marguerite</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <!-- GLightbox CSS (≈4 kB gzip) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <!-- Core styles -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link rel="preload" as="image" href="assets/img/hero.webp">
+  <link rel="preload" as="image" href="assets/img/portrait.webp">
+  <link rel="preload" as="image" href="assets/img/interlude.webp">
+
+  <link rel="preload" as="image" href="assets/img/gallery/01.webp" imagesrcset="assets/img/gallery/01.webp 1x">
+  <link rel="preload" as="image" href="assets/img/gallery/02.webp">
+  <link rel="preload" as="image" href="assets/img/gallery/03.webp">
+  <link rel="preload" as="image" href="assets/img/gallery/04.webp">
+
+</head>
+
+<body>
+  <!-- index.html -->
+  <header id="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo">Madeleine & Marguerite</a>
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+
+  <main id="content">
+    <!-- Hero -------------------------------------------------- -->
+    <section id="hero" class="hero">
+      <div class="container flow" style="text-align:center;">
+        <h1>Madeleine &amp; Marguerite</h1>
+        <p class="tagline">
+          Je capture les petits riens <span id="typed"></span><span class="cursor" aria-hidden="true">|</span>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Bienvenue -------------------------------------------- -->
+    <section id="about" class="about">
+      <div class="container">
+        <!-- Portrait -->
+        <figure>
+          <img src="assets/img/portrait.webp" alt="Votre photographe" />
+        </figure>
+
+        <!-- Texte -->
+        <div class="flow">
+          <h2 class="about-title">Bienvenue</h2>
+          <p class="kicker">Laissez-moi me présenter</p>
+
+          <!-- Intro visible -->
+          <p>Bienvenue dans mon univers. Ici, chaque image raconte un peu de vous. Une émotion, un détail, une lumière…
+          </p>
+          <p>Je fais des photos comme on fait des tartines le matin&nbsp;: avec amour, &amp; envie que ça réchauffe le
+            cœur.</p>
+
+          <!-- Texte étendu masqué -->
+          <div id="about-more" class="about-more" hidden>
+            <p>Je photographie les familles qui rient, les ventres qui s'arrondissent, les mains qui se cherchent, les
+              regards qui en disent long, les enfants qui courent trop vite, les bisous volés.</p>
+            <p>Mon univers&nbsp;? Un mélange de lumière douce, un soupçon de grain, &amp; des images un peu comme au
+              ciné. Je capture ce que vous êtes. Ce que vous ne voyez pas toujours, mais qui est là. Le lien, la
+              tendresse, le silence.</p>
+            <p>J'aime tout ce qui est vivant et qui déborde un peu.</p>
+            <p>📍 Basée à Lyon, j'ai un amour inconditionnel pour la golden hour (matin ou soir, selon les oiseaux),
+              &amp; je me déplace volontiers là où le cœur me porte — surtout jusqu'au Pays Basque.</p>
+            <p>Si vous aimez les photos qui provoquent quelque chose en vous, &amp; les instants simples mais forts en
+              émotions… alors je crois qu'on va bien s'entendre.</p>
+          </div>
+
+          <!-- Bouton toggle -->
+          <button class="btn-toggle-more" aria-expanded="false" aria-controls="about-more">
+            En&nbsp;savoir&nbsp;plus
+          </button>
+        </div>
+      </div>
+
+      <!-- Scribble décoratif -->
+      <svg class="scribble" viewBox="0 0 600 120" aria-hidden="true">
+        <path d="M0 80 C150 10, 450 150, 600 40" />
+      </svg>
+    </section>
+
+    <!-- Photo Strip Transition --------------------------------- -->
+    <section class="photo-strip" aria-hidden="true">
+      <div class="strip-container">
+        <div class="strip-track">
+          <img src="assets/img/gallery/01.webp" alt="" decoding="async" loading="eager" />
+          <img src="assets/img/gallery/02.webp" alt="" decoding="async" loading="eager" />
+          <img src="assets/img/gallery/03.webp" alt="" decoding="async" loading="eager" />
+          <img src="assets/img/gallery/04.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/05.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/06.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/07.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/08.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/09.webp" alt="" loading="lazy" />
+          <!-- Duplication pour le loop infini -->
+          <img src="assets/img/gallery/01.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/02.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/03.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/04.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/05.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/06.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/07.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/08.webp" alt="" loading="lazy" />
+          <img src="assets/img/gallery/09.webp" alt="" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Prestations -------------------------------------------- -->
+    <section id="services" class="services">
+      <div class="container flow">
+        <h2 class="services-title">Prestations</h2>
+
+        <div class="services-grid">
+          <article class="service-item flow">
+            <h3 class="service-name">Mariage</h3>
+            <p>Reportage complet de votre journée, des préparatifs aux moments forts.</p>
+            <p class="service-price">À&nbsp;partir&nbsp;de&nbsp;1200&nbsp;€</p>
+          </article>
+
+          <article class="service-item flow">
+            <h3 class="service-name">Naissance &amp; Grossesse</h3>
+            <p>Séance douce et intime pour immortaliser l'arrivée d'un enfant.</p>
+            <p class="service-price">À&nbsp;partir&nbsp;de&nbsp;400&nbsp;€</p>
+          </article>
+
+          <article class="service-item flow">
+            <h3 class="service-name">Famille</h3>
+            <p>Moments vrais et complices, en intérieur ou en extérieur.</p>
+            <p class="service-price">À&nbsp;partir&nbsp;de&nbsp;300&nbsp;€</p>
+          </article>
+        </div>
+
+        <button class="btn-primary">Réserver&nbsp;mon&nbsp;créneau</button>
+      </div>
+    </section>
+
+
+    <!-- Portfolio -------------------------------------------------- -->
+    <!-- ========== PORTFOLIO =================================================== -->
+    <section id="portfolio" class="py-24">
+      <h2 class="section-heading">Portfolio</h2>
+
+      <ul class="grid-gallery" role="list">
+        <!-- 1 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/01.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un couple s'embrassant au coucher du soleil">
+            <img src="assets/img/portfolio/thumbs/01thumb.webp"
+              alt="Couple s'embrassant tendrement durant la golden hour." loading="lazy" width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 2 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/02.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une future maman tenant son ventre">
+            <img src="assets/img/portfolio/thumbs/02thumb.webp"
+              alt="Femme enceinte en robe blanche dans un champ de fleurs." loading="lazy" width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 3 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/03.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo de détails de mains de nouveau-né">
+            <img src="assets/img/portfolio/thumbs/03thumb.webp"
+              alt="Gros plan sur les petits doigts d'un nouveau-né tenant le doigt de son parent." loading="lazy"
+              width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 4 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/04.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une famille riant dans un parc">
+            <img src="assets/img/portfolio/thumbs/04thumb.webp"
+              alt="Famille de quatre personnes jouant et riant ensemble sur l'herbe." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 5 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/05.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une mariée regardant par la fenêtre">
+            <img src="assets/img/portfolio/thumbs/05thumb.webp"
+              alt="Mariée en robe de dentelle, regardant pensivement par une grande fenêtre." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 6 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/06.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un enfant courant sur une plage">
+            <img src="assets/img/portfolio/thumbs/06thumb.webp"
+              alt="Jeune garçon courant joyeusement sur le sable au bord de l'océan." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 7 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/07.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un bouquet de mariée">
+            <img src="assets/img/portfolio/thumbs/07thumb.webp"
+              alt="Gros plan sur un bouquet de mariée composé de pivoines et d'eucalyptus." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 8 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/08.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un couple de dos marchant dans la forêt">
+            <img src="assets/img/portfolio/thumbs/08thumb.webp"
+              alt="Couple se tenant la main, marchant sur un sentier forestier en automne." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 9 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/09.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un bébé souriant dans son berceau">
+            <img src="assets/img/portfolio/thumbs/09thumb.webp"
+              alt="Bébé de quelques mois souriant, emmailloté dans un drap blanc." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 10 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/10.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une alliance sur un livre">
+            <img src="assets/img/portfolio/thumbs/10thumb.webp"
+              alt="Deux alliances en or posées sur les pages d'un vieux livre." loading="lazy" width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 11 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/11.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une petite fille cueillant des fleurs">
+            <img src="assets/img/portfolio/thumbs/11thumb.webp"
+              alt="Petite fille avec un chapeau de paille cueillant des marguerites dans un pré." loading="lazy"
+              width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 12 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/12.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un couple riant sous la pluie">
+            <img src="assets/img/portfolio/thumbs/12thumb.webp"
+              alt="Couple partageant un parapluie et riant sous une averse." loading="lazy" width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 13 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/13.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une femme enceinte assise">
+            <img src="assets/img/portfolio/thumbs/13thumb.webp"
+              alt="Future maman assise en tailleur, caressant son ventre arrondi." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 14 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/14.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo de pieds de bébé">
+            <img src="assets/img/portfolio/thumbs/14thumb.webp"
+              alt="Gros plan sur les pieds d'un nouveau-né tenus dans les mains de ses parents." loading="lazy"
+              width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 15 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/15.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'une famille se promenant au bord de l'eau">
+            <img src="assets/img/portfolio/thumbs/15thumb.webp"
+              alt="Silhouette d'une famille se tenant la main au coucher du soleil sur une plage." loading="lazy"
+              width="400" height="400">
+          </a>
+        </li>
+
+        <!-- 16 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/16.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo de la première danse des mariés">
+            <img src="assets/img/portfolio/thumbs/16thumb.webp"
+              alt="Couple de mariés effectuant leur première danse, entourés de lumières." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 17 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/17.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un père et son fils se regardant">
+            <img src="assets/img/portfolio/thumbs/17thumb.webp"
+              alt="Père tenant son jeune fils dans ses bras, se regardant avec tendresse." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+        <!-- 18 -->
+        <li class="gallery-item">
+          <a href="assets/img/portfolio/hd/18.webp" class="glightbox" data-gallery="portfolio"
+            aria-label="Agrandir la photo d'un couple âgé se tenant la main">
+            <img src="assets/img/portfolio/thumbs/18thumb.webp"
+              alt="Gros plan sur les mains ridées d'un couple âgé, entrelacées." loading="lazy" width="400"
+              height="400">
+          </a>
+        </li>
+
+      </ul>
+    </section>
+    <!-- ======================================================================= -->
+
+    <!-- Interlude Photo ------------------------------------------------>
+    <section id="interlude" class="interlude" style="background-image:url('assets/img/interlude.webp');">
+      <!--  Option : petite légende ou citation au centre  -->
+      <!-- <p class="interlude-caption">“Parce que chaque instant compte…”</p> -->
+    </section>
+
+
+    <!-- ─── AVIS CLIENTS ─────────────────────────── -->
+    <section id="avis" class="testi-timeline py-24">
+      <ol class="testi-list">
+
+        <!-- Titre = premier nœud ---------------------------------->
+        <!--<li class="testi-node left title-node">
+      <h2 class="timeline-title">Ils m’ont fait confiance</h2>
+    </li>-->
+
+        <li class="testi-node left">
+          <blockquote>
+            « Un moment fun et naturel ! Les photos respirent la complicité —
+            un vrai trésor pour nous. »
+            <cite>Famille&nbsp;Dupont</cite>
+          </blockquote>
+        </li>
+
+        <!-- 1 -->
+        <li class="testi-node right">
+          <blockquote>
+            « Nous avons vécu une journée inoubliable ! Les photos retranscrivent
+            toute l’émotion de notre mariage. »
+            <cite>Laura&nbsp;&amp;&nbsp;Antoine</cite>
+          </blockquote>
+        </li>
+
+        <!-- 2 -->
+        <li class="testi-node left">
+          <blockquote>
+            « Marie a su créer une atmosphère douce pour la séance naissance ;
+            les clichés sont juste magnifiques. »
+            <cite>Marine&nbsp;B.</cite>
+          </blockquote>
+        </li>
+
+        <!-- 3 -->
+        <li class="testi-node right">
+          <blockquote>
+            « Un moment fun et naturel ! Les photos respirent la complicité —
+            un vrai trésor pour nous. »
+            <cite>Famille&nbsp;Dupont</cite>
+          </blockquote>
+        </li>
+
+        <li class="testi-node left">
+          <span class="gmb-card-inline">
+            <span class="rating">5,0</span>
+            <span class="stars">★★★★★</span>
+            <span class="count">(42 avis)</span>
+            <a href="https://goo.gl/maps/xxxxxxxxxxxx" target="_blank" rel="noopener" class="cta">Lire sur Google</a>
+          </span>
+        </li>
+
+
+      </ol>
+    </section>
+
+
+    <!-- ─── CONTACT ───────────────────────────────────────── -->
+    <section id="contact" class="contact py-24">
+      <div class="container contact-grid">
+
+        <!-- Colonne infos -->
+        <div class="contact-info flow">
+          <h2 class="section-heading">Me&nbsp;contacter</h2>
+          <p>
+            Si tu es sensible à ce que tu viens de voir &amp; que tu penses qu’on créera des choses
+            <span id="typed-contact"></span><span class="cursor" aria-hidden="true">|</span>.
+          </p>
+
+
+          <ul class="contact-list">
+            <li><strong>Email&nbsp;:</strong> <a href="mailto:hello@madeleineetmarguerite.fr">
+                hello@madeleineetmarguerite.fr</a></li>
+            <li><strong>Basée à&nbsp;:</strong> Lyon&nbsp;— déplacements partout en France</li>
+          </ul>
+        </div>
+
+        <!-- Colonne formulaire -->
+        <form class="contact-form" action="contact.php" method="post">
+
+          <input type="text" name="website" autocomplete="off" tabindex="-1"
+            style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+
+          <div class="field">
+            <label for="name">Votre nom</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="field">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Envoyer&nbsp;✉︎</button>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- ─── GALERIE PRIVÉE ────────────────────────── -->
+    <section id="galerie" class="private-gallery">
+      <h2 class="section-heading">Galerie&nbsp;privée</h2>
+      <p>Vos souvenirs ne tiennent qu’à un mot&nbsp;de&nbsp;passe.</p>
+
+      <a href="galerie-privee/index.php" class="btn-primary" id="btn-gallery">Entrer</a>
+    </section>
+
+
+
+
+  </main>
+
+  <!-- ─── FOOTER ──────────────────────────────────────── -->
+  <footer class="site-footer">
+
+    <ul class="footer-links">
+      <li><a href="#contact"><span class="icon">📧</span>Contact</a></li>
+      <li><a href="mentions.html" target="_blank" rel="noopener noreferrer"><span class="icon">⚖️</span>Mentions
+          légales</a></li>
+      <li><a href="https://www.instagram.com/madeleineetmarguerite.photo/" target="_blank"
+          rel="noopener noreferrer"><span class="icon">📷</span>Instagram</a></li>
+    </ul>
+
+    <p class="footer-copy">© <span id="brand">Madeleine&nbsp;&amp;&nbsp;Marguerite</span> · <span id="year">2025</span>
+    </p>
+    <p class="footer-note">Merci d’être venu jusqu’ici. Peut-être qu’on ira plus loin ensemble.</p>
+
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    /* Initialisation — ultra simple */
+    const lightbox = GLightbox({
+      selector: '.glightbox',  // c’est déjà la classe sur chaque <a>
+      loop: true,              // navigue en boucle
+      touchNavigation: true,   // swipe mobile
+      closeButton: true
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+  <script>smoothscroll.polyfill();</script>
+
+  <script src="js/main.js" defer></script>
+</body>
+
+</html>
+
+====================
+STYLE.CSS
+====================
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+/***************************************************
+  Global Stylesheet — style.css (boho-mix v7)
+  • Section About (full‑height)
+  • Collapsible text & button styles
+  • Photo Strip défilante (transition artistique)
+  • IMPROVED Section Services avec transitions fluides
+***************************************************/
+
+/* 0-Menu */
+/* 1. Header transparent au-dessus du hero */
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.header-inner {
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+}
+
+/* 2. Hamburger icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* 3. Menu plein écran, overlay sombre (fade-in) */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.nav-menu li+li {
+  margin-top: var(--space-lg);
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  pointer-events: auto;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--color-accent);
+}
+
+/* 4. États « ouvert » */
+.hamburger.is-active .bar:nth-child(1) {
+  transform: translateY(0.65rem) rotate(45deg);
+}
+
+.hamburger.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+  transform: translateY(-0.65rem) rotate(-45deg);
+}
+
+.nav-menu.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  pointer-events: auto;
+}
+
+/* 5. Changement de couleur au scroll */
+.hamburger.scrolled .bar {
+  background-color: var(--color-accent);
+}
+
+/* 5.5 Logo dans le header */
+.logo {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.logo.is-scrolled {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+
+/* 6. État de fermeture : on force l'opacité à 0 mais on garde visible le temps du fade */
+.nav-menu.is-closing {
+  opacity: 0;
+  visibility: visible;        /* reste visible pendant le fade-out */
+  pointer-events: auto;        /* bloque le fond tant que ça fade */
+  transition: opacity 0.5s ease;
+}
+
+/* Quand le menu est ouvert, on compense la largeur de la scrollbar */
+html.menu-open { padding-right: var(--sbw, 0px); }
+
+
+
+
+/* ---------- 1. Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  /* évite que les ancres soient collées en haut */
+}
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* fichier variables.css ou tout en haut de style.css */
+body {
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .08) 0%, rgba(0, 0, 0, .02) 100%);
+
+  /* petit plus : fixe le fond quand on scroll (facultatif) 
+  background-attachment: fixed;*/
+}
+
+/* IMPORTANT : retire tout fond dégradé local */
+.services,
+#portfolio {
+  background: transparent;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p:not(:last-child) {
+  margin-bottom: var(--space-sm);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+a:hover, 
+a:focus-visible { 
+  color: var(--color-accent-alt); 
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ---------- 3. Helpers ---------- */
+.container {
+  width: min(92%, 70rem);
+  margin-inline: auto;
+  padding-block: var(--space-lg);
+}
+
+.flow>*+* {
+  margin-top: var(--flow-space, var(--space-sm));
+}
+
+/* ---------- 4. Utilities ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 4px rgb(0 0 0 /.15);
+}
+
+/* ---------- 5. Hero (version d’origine) ---------- */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding-inline: var(--space-sm);
+  background: url('../assets/img/hero.webp') center/cover no-repeat fixed;
+  position: relative;
+  text-align: center;
+  color: var(--color-text);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .hero { background-attachment: scroll; }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 0 0/.55) 0%, rgb(0 0 0/.4) 60%, rgb(0 0 0/.55) 100%);
+  z-index: -1; /* comme avant */
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 6vw+1rem, 7rem);
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 2px 4px rgb(0 0 0 /.4);
+}
+
+.hero .tagline {
+  font-size: 1.125rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: .05em;
+  max-width: 40ch;
+  margin-inline: auto;
+  opacity: .9;
+}
+
+.tagline { white-space: nowrap; }
+.cursor { display:inline-block; margin-left:2px; animation: blink 1s steps(1,end) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+
+/* ---------- 6. About ---------- */
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dark);
+  padding-block: var(--space-xl);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .08) 0%, rgba(0, 0, 0, .18) 100%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.about .container {
+  display: grid;
+  gap: var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+@media(min-width:50em) {
+  .about .container {
+    grid-template-columns: minmax(320px, 480px) 1fr;
+    align-items: start;
+    column-gap: 5vw;
+  }
+}
+
+.about figure {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 4/5;
+  align-self: start;
+  border: 2px solid var(--color-line-light);
+  box-shadow: 0 2px 4px rgb(0 0 0 /.08), 0 8px 16px rgb(0 0 0 /.04);
+}
+
+.about figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about .flow {
+  max-width: 65ch;
+  margin-inline: 0;
+}
+
+.about-title {
+  font-size: clamp(4rem, 8vw+1rem, 7rem);
+  margin-bottom: var(--space-sm);
+}
+
+.kicker {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-lg);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.about p {
+  max-width: 65ch;
+}
+
+.about-more {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-medium) var(--ease-standard);
+}
+
+.about-more.open {
+  max-height: 1000px;
+}
+
+.btn-toggle-more {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: var(--space-lg) auto 0;
+  padding: .85rem 1rem;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.btn-toggle-more:hover,
+.btn-toggle-more:focus {
+  background: #2e2e2e;
+}
+
+.btn-toggle-more::after {
+  content: "▼";
+  font-size: .8em;
+  margin-left: .5rem;
+  transition: transform var(--duration-medium) var(--ease-standard);
+}
+
+.btn-toggle-more[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.btn-toggle-more:focus {
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Scribble (About) */
+.about .scribble {
+  position: absolute;
+  top: 1rem;
+  right: -5vw;
+  width: 60vw;
+  max-width: 800px;
+  stroke: var(--color-line-light);
+  stroke-width: 1;
+  fill: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- 6.5. Photo Strip ---------- */
+.photo-strip {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding-block: var(--space-lg);
+  position: relative;
+  border-top: 1px solid rgba(212, 163, 115, .2);
+  border-bottom: 1px solid rgba(212, 163, 115, .2);
+  scroll-snap-type: none;
+}
+
+.photo-strip::before,
+.photo-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  background: linear-gradient(90deg, var(--color-bg) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.photo-strip::before {
+  left: 0;
+}
+
+.photo-strip::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--color-bg) 0%, transparent 100%);
+}
+
+.strip-container {
+  width: 100%;
+  position: relative;
+}
+
+.strip-track {
+  display: flex;
+  gap: var(--space-sm);
+  animation: scroll-horizontal 40s linear infinite;
+  will-change: transform;
+  animation-play-state: paused;
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.photo-strip img {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.photo-strip img[data-loaded="true"] {
+  opacity: 1;
+}
+
+
+.strip-track img {
+  height: 180px;
+  width: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  filter: sepia(20%) contrast(1.1) brightness(0.95);
+  transition: filter var(--duration-medium) var(--ease-standard);
+  border: 2px solid rgba(212, 163, 115, .15);
+}
+
+.strip-track img:hover {
+  filter: sepia(0%) contrast(1) brightness(1);
+  transform: scale(1.02);
+}
+
+@media(min-width:50em) {
+  .strip-track img {
+    height: 220px;
+  }
+}
+
+@media(min-width:70em) {
+  .strip-track img {
+    height: 260px;
+  }
+}
+
+.photo-strip.is-running .strip-track { animation-play-state: running; }
+.photo-strip.is-active { scroll-snap-type: x mandatory; }
+
+/* ---------- 7. Services ---------- */
+.services {
+  padding-block: var(--space-xl);
+  position: relative;
+  isolation: isolate;
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
+}
+
+.services .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.services-title {
+  font-size: clamp(4rem, 8vw+1rem, 7rem);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+  color: var(--color-text-dark);
+}
+
+.services-grid {
+  display: grid;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  max-width: 85rem;
+  margin-inline: auto;
+}
+
+@media(min-width:50em) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+.service-item {
+  background: rgba(255, 255, 255, .25);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 12px;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  text-align: center;
+  transition: all var(--duration-medium) var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.service-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-medium) var(--ease-standard);
+}
+
+.service-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, .35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+}
+
+.service-item:hover::before {
+  opacity: 1;
+}
+
+.service-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw+1rem, 2.5rem);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-dark);
+}
+
+.service-item p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a3b35;
+  margin-bottom: var(--space-md);
+}
+
+.service-price {
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: .03em;
+  font-size: 1.2rem;
+  margin-top: auto;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: var(--space-xl) auto 0;
+  padding: 1rem 2rem;
+  background: var(--color-accent);
+  color: var(--color-text-dark);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-standard);
+  box-shadow: 0 4px 12px rgba(212, 163, 115, .2);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #e8b584;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 163, 115, .3);
+}
+
+.btn-primary:focus {
+  outline: 2px dashed var(--color-accent-alt);
+  outline-offset: 4px;
+}
+
+/***************************************************
+  8. Portfolio — grille 3‑2‑1 façon Instagram
+***************************************************/
+
+/* --- Utilities : vertical section padding -------------------- */
+.py-24 {
+  padding-block: var(--space-xl);
+  /* 4 rem d’après tes variables */
+}
+
+.section-heading {
+  font-size: clamp(4rem, 8vw+1rem, 7rem);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: #2d1f1a;
+}
+
+.section-heading h1 {
+  margin-top: var(--space-sm);
+  /* petite respiration supplémentaire */
+}
+
+/* --- Grille centrée, 3 colonnes desktop, 2 tablette, 1 mobile --- */
+.grid-gallery {
+  --gap: 0.1rem;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(6, 1fr);
+  /*max-width: 58rem;*/
+  /* ~1080 px + gaps : joli cadre */
+  margin-inline: auto;
+  /* centre l’ensemble dans la section */
+  padding-inline: var(--gap);
+  margin-bottom: 0%;
+  scroll-padding-bottom: 0;
+}
+
+@media(max-width:991px) {
+  .grid-gallery {
+    grid-template-columns: repeat(3, 1fr)
+  }
+}
+
+@media(max-width:640px) {
+  .grid-gallery {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1/1;
+  /*border-radius: var(--radius-lg);*/
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgb(0 0 0/.12);
+  transition: transform .35s var(--ease-standard), box-shadow .35s var(--ease-standard);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(0 0 0/.18)
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s var(--ease-standard)
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05)
+}
+
+/* Accent subtil sur focus clavier */
+.gallery-item a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  /*border-radius: var(--radius-lg)*/
+}
+
+
+/***************************************************
+  9. Interlude Photo (plein écran parallax)
+***************************************************/
+.interlude {
+  min-height: 100vh;
+  /* occupe tout le viewport */
+  display: grid;
+  place-items: center;
+  /* centre une éventuelle légende */
+  position: relative;
+  overflow: hidden;
+
+  /* Image de fond & parallaxe “à la Hero” */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* l’effet  */
+}
+
+/* Teinte légère pour la lisibilité du texte éventuel */
+.interlude::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, .45) 0%,
+      rgba(0, 0, 0, .25) 60%,
+      rgba(0, 0, 0, .45) 100%);
+  z-index: -1;
+}
+
+/* Caption optionnelle */
+.interlude-caption {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  color: #fff;
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+/* — Fallback iOS / Safari mobile (le fixed est ignoré) — */
+@supports (-webkit-touch-callout: none) {
+  .interlude {
+    background-attachment: scroll;
+    /* désactive le fixed */
+  }
+}
+
+
+
+
+/***************************************************
+  11. Testimonials timeline — fine‑tuned alignment
+***************************************************/
+.testi-timeline {
+  position: relative;
+  color: var(--color-text-dark);
+}
+
+/* containment + air on both sides */
+.testi-list {
+  margin: 0;
+  padding: 0 clamp(var(--space-lg), 4vw, var(--space-xl));
+  /* responsive side padding */
+  list-style: none;
+  position: relative;
+}
+
+/* filet doré au centre */
+.testi-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--color-accent);
+}
+
+/* node générique */
+.testi-node {
+  position: relative;
+  margin-bottom: var(--space-xl);
+  width: 44%;
+  /* même espace des deux côtés */
+}
+
+/* alignement gauche / droite */
+.testi-node.left {
+  padding-right: var(--space-md);
+  margin-left: 0;
+  text-align: right;
+}
+
+.testi-node.right {
+  padding-left: var(--space-md);
+  margin-left: 56%;
+  /* 50% + 6% = même écart */
+  text-align: left;
+}
+
+/* pastille discrète – désactivée.  Dé‑commente pour l’afficher 
+.testi-node::before{
+  content:"";
+  position:absolute;top:.4rem;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--color-accent);opacity:.25;
+}
+.testi-node.left::before{right:-calc(var(--space-md)/2)}
+.testi-node.right::before{left:-calc(var(--space-md)/2)}
+*/
+
+blockquote {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 32rem;
+  display: inline-block;
+  /* pour caler contre la ligne */
+}
+
+blockquote cite {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+
+/* Mobile : tout en colonne */
+@media(max-width:640px) {
+  .testi-list {
+    padding: 0 var(--space-lg);
+  }
+
+  .testi-list::before {
+    display: none;
+  }
+
+  .testi-node,
+  .testi-node.left,
+  .testi-node.right {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    padding: 0;
+  }
+}
+
+
+/***************************************************
+  11.5  Google‑rating node inside timeline
+***************************************************/
+/*  Permet d’insérer une “carte” note Google comme dernier nœud */
+.testi-node.center {
+  width: 100%;
+  /* occupe toute la largeur */
+  margin-left: 0;
+  padding: 0;
+  text-align: center;
+  /* centre le contenu */
+}
+
+/* mini‑carte réutilisable (inline) */
+/* look épuré, plus de fond ni ombre */
+.gmb-card-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+
+.gmb-card-inline .rating {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.gmb-card-inline .stars {
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  letter-spacing: .12rem;
+}
+
+.gmb-card-inline .count {
+  font-size: .9rem;
+  opacity: .75;
+  margin-left: .4rem;
+}
+
+.gmb-card-inline .cta {
+  font-size: .9rem;
+  color: var(--color-accent-alt);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+.gmb-card-inline .cta:hover {
+  color: var(--color-accent);
+}
+
+
+/***************************************************
+  13. Contact
+***************************************************/
+.contact-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media(min-width:50em) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    column-gap: 5vw;
+  }
+}
+
+/* Texte & liens */
+
+/* Colonne infos : même typo & couleur que le texte “About” */
+.contact-info,
+.contact-info p,
+.contact-info strong {
+  color: var(--color-text-dark);
+  /* même teinte que About */
+  font-weight: 400;
+  /* régular, pas bold */
+  line-height: 1.7;
+}
+
+/* Titre des champs (= <label>) */
+.contact-form label {
+  color: var(--color-text-dark);
+  font-weight: 500;
+  /* un soupçon plus marqué pour la lisibilité */
+  letter-spacing: .02em;
+}
+
+.contact-info p {
+  max-width: 50ch;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li:not(:last-child) {
+  margin-bottom: var(--space-sm);
+}
+
+.contact-list a {
+  color: var(--color-accent-alt);
+}
+
+.contact-list a:hover {
+  color: var(--color-accent);
+}
+
+/* Formulaire */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  font-size: 1rem;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, .25);
+  outline: none;
+}
+
+/* Bouton primaire ré-utilisé (déjà défini) */
+
+
+/***************************************************
+  14. Galerie privée – mot-de-passe final
+***************************************************/
+.private-gallery {
+  background: var(--color-text-dark);
+  /* fond dark */
+  text-align: center;
+  padding-block: var(--space-xl);
+}
+
+/* Titre : exactement le même gabarit que tes autres sections */
+.private-gallery .section-heading {
+  font-family: var(--font-display);
+  color: var(--color-accent);
+  font-size: clamp(4rem, 8vw + 1rem, 7rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+.private-gallery h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw + 1rem, 6rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+/* Tagline : style “About” classique */
+.private-gallery p {
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  /* même teinte que About */
+  font-weight: 400;
+  /* régular, pas bold */
+  line-height: 1.7;
+}
+
+/* Bouton noir façon “En savoir plus” (no arrow) */
+#btn-gallery {
+  display: inline-block;
+  padding: 1rem 2.25rem;
+  background: var(--color-accent);
+  color: var(--color-text-dark);
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.btn-dark:hover,
+.btn-dark:focus {
+  background: #2e2e2e;
+  transform: translateY(-2px);
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* titre “Galerie privée” : même gabarit que Services / Portfolio */
+.private-gallery .section-heading {
+  font-size: clamp(1rem, 1vw + 1rem, 5rem);
+  /* un cran plus petit */
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------
+   Fine‑tuning : Galerie privée (alignement & bouton)
+   ------------------------------------------------ */
+.private-gallery {
+  justify-content: flex-start;
+  /* titre collé en haut */
+  padding-top: var(--space-xl);
+  /* même respiration qu’une section standard */
+}
+
+/* Bouton “Entrer” plus fin & élégant */
+#btn-gallery {
+  width: auto;
+  /* plus de 100 % */
+  max-width: none;
+  padding: .75rem 1.5rem;
+  /* plus discret */
+  font-size: 1rem;
+  letter-spacing: .03em;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 8px rgb(0 0 0/.12);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#btn-gallery:hover,
+#btn-gallery:focus {
+  transform: translateY(-2px);
+  background: #e8b584;
+}
+
+/* ----------------------------------------
+   Ensure Galerie privée uses flex for vertical centering 
+------------------------------------------- */
+.private-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/***************************************************
+  15. Footer
+***************************************************/
+.site-footer {
+  background: var(--color-text-dark);
+  color: var(--color-text);
+  text-align: center;
+  padding-block: var(--space-lg);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-md);
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.footer-links .icon {
+  font-size: 1.2rem;
+}
+
+.footer-copy {
+  margin-bottom: var(--space-sm);
+}
+
+#brand {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--duration-medium) var(--ease-standard);
+}
+
+.footer-note {
+  font-size: 1rem;
+  opacity: .85;
+}
+
+
+
+
+
+/* --- Notice formulaire --- */
+.notice {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: .5rem 1rem;
+  padding: .9rem 1rem;
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-lg);
+  background: #fff;
+  color: #111;
+}
+.notice strong { font-weight: 600; }
+.notice a { color: #0b63ce; text-decoration: underline; }
+.notice .notice-close {
+  background: transparent; border: 0; font-size: 1.2rem; line-height: 1;
+  cursor: pointer; color: inherit; padding: .25rem;
+}
+.notice.is-error { border-color: #c47a00; background: #fff7ea; }
+.notice.is-fail  { border-color: #b3261e; background: #ffeeee; }
+
+/* pas de style focus visible pour .notice (on laisse propre à l’écran) */
+.notice:focus { outline: none; }
+
+
+====================
+VARIABLES.CSS
+====================
+
+/* --------------------------------------------------
+   Design Tokens — variables.css
+   --------------------------------------------------
+   • Palette sombre (site noir & or rust)
+   • Palette sable « boho » (section chaleureuse)
+   • Stacks typographiques
+   • Échelle d’espacements, rayons, z-index, timing
+--------------------------------------------------*/
+
+:root {
+  /* PALETTE SOMBRE */
+  --color-bg: #0e0e0e;
+  --color-surface: #1a1a1a;
+  --color-text: #eaeaea;
+  --color-muted: #a1a1a1;
+  --color-accent: #d4a373;
+  /* doré rust */
+  --color-accent-alt: #5b8d8c;
+  /* teal désaturé */
+
+  /* PALETTE SABLE / BOHO */
+  --color-sand: #c9a78d;
+  /* fond chaud section About */
+  --color-sand-dark: #b8997f;
+  /* variante plus sombre */
+  --color-text-dark: #1a1a1a;
+  /* texte sur fond sable */
+  --color-line-light: #f0e9e4;
+  /* crème pour les “scribbles” */
+
+  /* TYPOGRAPHIE */
+  --font-display: 'Mrs Saint Delafield', cursive;
+  /*--font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;*/
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-base-size: 16px;
+  --line-height-base: 1.6;
+
+  /* ESPACEMENTS (échelle 8 px) */
+  --space-xxs: 0.25rem;
+  /* 4 px */
+  --space-xs: 0.5rem;
+  /* 8 px */
+  --space-sm: 1rem;
+  /* 16 px */
+  --space-md: 1.5rem;
+  /* 24 px */
+  --space-lg: 2rem;
+  /* 32 px */
+  --space-xl: 3rem;
+  /* 48 px */
+
+  /* RAYONS */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Z-INDEX */
+  --z-dropdown: 800;
+  --z-overlay: 900;
+  --z-fixed: 1000;
+
+  /* ANIMATIONS */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-medium: 300ms;
+}
+
+/* Pré-hook thème clair (si besoin un jour) */
+:root[data-theme='light'] {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #666666;
+}
+
+====================
+MAIN.JS
+====================
+
+// main.js — menu mobile + access + interactions
+document.addEventListener("DOMContentLoaded", () => {
+  const btnBurger = document.querySelector(".hamburger");
+  const hero = document.querySelector(".hero");
+  const logo = document.querySelector(".logo");
+  if (!btnBurger) return;
+
+  // ---- Menu element (création si absent)
+  let navMenu = document.querySelector(".nav-menu");
+  if (!navMenu) {
+    navMenu = document.createElement("nav");
+    navMenu.className = "nav-menu";
+    navMenu.setAttribute("aria-hidden", "true");
+    navMenu.innerHTML = `
+      <ul>
+        <li><a href="#hero">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Prestations</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#galerie">Galerie Privée</a></li>
+      </ul>`;
+    document.body.appendChild(navMenu);
+  }
+
+  // ---- Scrollbar compensation (évite le "saut" de layout)
+  function setScrollbarCompensation(enable) {
+    if (enable) {
+      const sbw = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.setProperty("--sbw", sbw + "px");
+      document.documentElement.classList.add("menu-open");
+    } else {
+      document.documentElement.classList.remove("menu-open");
+      document.documentElement.style.removeProperty("--sbw");
+    }
+  }
+
+  // ---- Focus trap
+  let lastFocusedElement = null;
+  let trapHandler = null;
+  let firstFocusable = null;
+  let lastFocusable = null;
+
+  function setupFocusables(container) {
+    const focusables = container.querySelectorAll(
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable = focusables[0] || null;
+    lastFocusable = focusables[focusables.length - 1] || null;
+  }
+
+  function addTrap() {
+    removeTrap(); // sécurité
+    trapHandler = (e) => {
+      if (e.key !== "Tab" || !firstFocusable || !lastFocusable) return;
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", trapHandler);
+  }
+
+  function removeTrap() {
+    if (trapHandler) {
+      document.removeEventListener("keydown", trapHandler);
+      trapHandler = null;
+    }
+  }
+
+  // ---- Open / Close
+  function openMenu() {
+    lastFocusedElement = document.activeElement;
+
+    navMenu.classList.remove("is-closing");
+    btnBurger.classList.add("is-active");
+    navMenu.classList.add("is-visible");
+    btnBurger.setAttribute("aria-expanded", "true");
+    btnBurger.setAttribute("aria-pressed", "true");
+    navMenu.setAttribute("aria-hidden", "false");
+
+    document.documentElement.style.overflow = "hidden";
+    setScrollbarCompensation(true);
+
+    setupFocusables(navMenu);
+    addTrap();
+
+    // ← focus sur le conteneur, pas sur le 1er lien
+    if (!navMenu.hasAttribute("tabindex"))
+      navMenu.setAttribute("tabindex", "-1");
+    navMenu.focus();
+  }
+
+  function closeMenu() {
+    // état "closing" pour animer le fade-out
+    navMenu.classList.add("is-closing");
+    btnBurger.classList.remove("is-active");
+    btnBurger.setAttribute("aria-expanded", "false");
+    btnBurger.setAttribute("aria-pressed", "false");
+    navMenu.setAttribute("aria-hidden", "true");
+
+    const onEnd = (e) => {
+      if (e.propertyName !== "opacity") return;
+      navMenu.classList.remove("is-visible", "is-closing");
+      document.documentElement.style.overflow = "";
+      setScrollbarCompensation(false);
+      removeTrap();
+      navMenu.removeEventListener("transitionend", onEnd);
+      if (
+        lastFocusedElement &&
+        typeof lastFocusedElement.focus === "function"
+      ) {
+        lastFocusedElement.focus();
+      }
+    };
+    navMenu.addEventListener("transitionend", onEnd);
+  }
+
+  // ---- Events
+  btnBurger.addEventListener("click", () => {
+    const isOpen = btnBurger.classList.contains("is-active");
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  // Clic dans l’overlay : ferme (lien OU fond)
+  navMenu.addEventListener("click", (e) => {
+    if (!e.target.closest("a")) {
+      closeMenu();
+    } else {
+      // lien cliqué : on laisse naviguer puis on ferme
+      closeMenu();
+    }
+  });
+
+  // Esc pour fermer
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btnBurger.classList.contains("is-active")) {
+      e.preventDefault();
+      closeMenu();
+    }
+  });
+
+  // Recalcule la compensation si resize pendant menu ouvert
+  window.addEventListener("resize", () => {
+    if (btnBurger.classList.contains("is-active"))
+      setScrollbarCompensation(true);
+  });
+
+  // Couleur du burger après le hero
+  // Couleur du burger + affichage logo après le hero
+if (hero && logo) {
+  window.addEventListener(
+    "scroll",
+    () => {
+      const pastHero = hero.getBoundingClientRect().bottom <= 0;
+      btnBurger.classList.toggle("scrolled", pastHero);
+      logo.classList.toggle("is-scrolled", pastHero); // ← apparition logo
+    },
+    { passive: true }
+  );
+}
+
+});
+
+
+// --------------------------------------------------
+// parallax minimal (rAF + IO pour ne calculer que si visible)
+// --- Parallax minimal (rAF + IO)
+const heroEl = document.querySelector(".hero");
+const bg = document.querySelector(".hero-bg");
+if (heroEl && bg) {
+  // active le mode parallax (désactive le background fallback en CSS)
+  heroEl.classList.add("has-parallax");
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const rect = heroEl.getBoundingClientRect();
+      // amplitude douce (30–40 px)
+      const progress = Math.max(0, Math.min(1, -rect.top / window.innerHeight));
+      bg.style.setProperty("--py", (progress * 36).toFixed(1) + "px");
+      ticking = false;
+    });
+  };
+
+  const io = new IntersectionObserver(
+    ([e]) => {
+      if (e.isIntersecting) {
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      } else {
+        window.removeEventListener("scroll", onScroll);
+      }
+    },
+    { threshold: 0 }
+  );
+  io.observe(heroEl);
+}
+
+// --------------------------------------------------
+// Bloc "En savoir plus" (inchangé)
+(function () {
+  const btn = document.querySelector(".btn-toggle-more");
+  const panel = document.getElementById("about-more");
+  if (!btn || !panel) return;
+
+  const setMaxHeight = (el, toExpand) => {
+    if (toExpand) {
+      el.hidden = false;
+      const full = el.scrollHeight;
+      el.style.maxHeight = full + "px";
+    } else {
+      const full = el.scrollHeight;
+      el.style.maxHeight = full + "px";
+      requestAnimationFrame(() => {
+        el.style.maxHeight = "0px";
+      });
+    }
+  };
+
+  btn.addEventListener("click", () => {
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!isOpen));
+    btn.textContent = isOpen ? "En\u00a0savoir\u00a0plus" : "Réduire";
+    setMaxHeight(panel, !isOpen);
+    panel.classList.toggle("open", !isOpen);
+    if (isOpen) {
+      panel.addEventListener(
+        "transitionend",
+        () => {
+          if (panel.style.maxHeight === "0px") panel.hidden = true;
+        },
+        { once: true }
+      );
+    }
+  });
+})();
+
+// --------------------------------------------------
+// --------------------------------------------------
+// Photo strip — fade-in + démarrage seulement si visible & images prêtes
+(function () {
+  const strip = document.querySelector(".photo-strip");
+  if (!strip) return;
+
+  const track = strip.querySelector(".strip-track");
+  if (!track) return;
+
+  // Fade-in progressif quand chaque image est chargée
+  const markLoaded = (img) => (img.dataset.loaded = "true");
+  track.querySelectorAll("img").forEach((img) => {
+    if (img.complete) {
+      markLoaded(img);
+    } else {
+      img.addEventListener("load", () => markLoaded(img), { once: true });
+      img.addEventListener("error", () => markLoaded(img), { once: true });
+    }
+  });
+
+  // Ne lance l’animation que quand la strip est visible
+  // ET quand les 3 premières images sont décodées (évite le "saut")
+  const firstImgs = Array.from(track.querySelectorAll("img")).slice(0, 3);
+  const decodeImg = (img) =>
+    img.decode ? img.decode().catch(() => {}) : Promise.resolve();
+
+  let ready = false;
+  Promise.all(firstImgs.map(decodeImg)).then(() => {
+    ready = true;
+    // si déjà visible au moment où ça devient prêt, on démarre
+    if (strip._isIntersecting) strip.classList.add("is-running");
+  });
+
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      strip._isIntersecting = entry.isIntersecting;
+      strip.classList.toggle("is-active", entry.isIntersecting);
+      // on ne lance que si visible *et* prêt
+      if (entry.isIntersecting && ready) {
+        strip.classList.add("is-running");
+      } else {
+        strip.classList.remove("is-running");
+      }
+    },
+    { threshold: 0 }
+  );
+
+  io.observe(strip);
+})();
+
+// --------------------------------------------------
+// Ajuste la hauteur mini de la section "Galerie"
+function fitGallery() {
+  const footer = document.querySelector(".site-footer");
+  const gallery = document.getElementById("galerie");
+  if (!footer || !gallery) return;
+  const h = footer.offsetHeight;
+  gallery.style.minHeight = `calc(100vh - ${h}px)`;
+}
+window.addEventListener("load", fitGallery);
+window.addEventListener("resize", fitGallery);
+
+// --------------------------------------------------
+// --- Bandeau de statut formulaire (success/error) ---
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(location.search);
+  const status = params.get("status"); // "error" | "send_error" | null
+  if (!status) return;
+
+  const contact = document.querySelector("#contact .container");
+  if (!contact) return;
+
+  const box = document.createElement("div");
+  box.className = `notice ${status === "error" ? "is-error" : "is-fail"}`;
+  box.setAttribute("role", "status");
+  box.setAttribute("aria-live", "polite");
+  box.innerHTML = `
+    <strong>${
+      status === "error"
+        ? "Il manque des infos."
+        : "Envoi impossible pour le moment."
+    }</strong>
+    <span>${
+      status === "error"
+        ? "Vérifie ton nom, ton e-mail et ton message, puis renvoie le formulaire."
+        : "Réessaie plus tard ou écris-moi directement : "
+    }
+      ${
+        status === "send_error"
+          ? `<a href="mailto:hello@madeleineetmarguerite.fr">hello@madeleineetmarguerite.fr</a>`
+          : ""
+      }
+    </span>
+    <button class="notice-close" aria-label="Fermer l’alerte">×</button>
+  `;
+  contact.prepend(box);
+
+  // focus non-visible (pas de halo), mais utile pour lecteurs d’écran
+  box.setAttribute("tabindex", "-1");
+  box.focus({ preventScroll: true });
+  box.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  box
+    .querySelector(".notice-close")
+    ?.addEventListener("click", () => box.remove());
+});
+
+
+// ============ Typed Engine (factorisé) ============
+(function () {
+  // Respecte la préférence "réduire les animations"
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+  async function runTyped(el, words, {
+    typeDelay = 55,
+    eraseDelay = 35,
+    holdDelay = 1200,
+    loopDelay = 400,
+    initial = words[0] || ""
+  } = {}) {
+    if (!el) return;
+    el.setAttribute('aria-live', 'polite');
+
+    if (reduced) { el.textContent = initial; return; }
+
+    let i = 0, stop = false;
+    const onHide = () => { stop = true; };
+    window.addEventListener('pagehide', onHide, { once: true });
+
+    const typeWord = async (w) => {
+      el.textContent = "";
+      for (let k = 0; k < w.length && !stop; k++) {
+        el.textContent += w[k];
+        await sleep(typeDelay);
+      }
+    };
+    const eraseWord = async () => {
+      for (let k = el.textContent.length; k >= 0 && !stop; k--) {
+        el.textContent = el.textContent.slice(0, k);
+        await sleep(eraseDelay);
+      }
+    };
+
+    // Fallback initial discret
+    if (!el.textContent) el.textContent = initial;
+
+    while (!stop) {
+      const w = words[i % words.length];
+      if (el.textContent) el.textContent = "";
+      await typeWord(w);
+      await sleep(holdDelay);
+      await eraseWord();
+      await sleep(loopDelay);
+      i++;
+    }
+  }
+
+  // -------- Instances --------
+  // Hero
+  runTyped(
+    document.getElementById('typed'),
+    [
+      "authentiques",
+      "vrais",
+      "sincères",
+      "pudiques",
+      "qui font sourire",
+      "qui font rire",
+      "qui font pleurer",
+      "qui font battre le coeur",
+      "qui font le quotidien",
+      "qui font l'amour",
+      "qui font la vie"
+    ],
+    { initial: "authentiques" }
+  );
+
+  // Contact (point collé après le span dans le HTML)
+  runTyped(
+    document.getElementById('typed-contact'),
+    ["vraies","authentiques","sincères","lumineuses"],
+    { initial: "vraies" }
+  );
+})();
+
+
+
+====================
+MERCI.HTML
+====================
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci ! - Madeleine & Marguerite</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .merci-container {
+            background: var(--color-surface);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            max-width: 600px;
+        }
+        .merci-container h1 {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+        .merci-container p {
+            margin-bottom: var(--space-lg);
+            color: var(--color-text);
+        }
+        .btn-back {
+            display: inline-block;
+            padding: .75rem 1.5rem;
+            background: var(--color-accent);
+            color: var(--color-text-dark);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background .3s;
+        }
+        .btn-back:hover {
+            background: #e8b584;
+        }
+    </style>
+</head>
+<body>
+    <div class="merci-container flow">
+        <h1>Merci&nbsp;!</h1>
+        <p>Votre message a bien été envoyé. Je reviendrai vers vous dans les plus brefs délais.</p>
+        <a href="index.html" class="btn-back">Retour à l'accueil</a>
+    </div>
+</body>
+</html>
+
+
+====================
+CONTACT.PHP
+====================
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+  header("Location: index.html"); exit;
+}
+
+// 0) Honeypot (champ invisible côté HTML : name="website")
+if (!empty($_POST["website"])) {
+  // bot détecté → fait comme si tout allait bien
+  header("Location: merci.html"); exit;
+}
+
+// 1) Récup & nettoyage
+$name    = trim(strip_tags($_POST["name"] ?? ""));
+$email   = filter_var(trim($_POST["email"] ?? ""), FILTER_SANITIZE_EMAIL);
+$message = trim(strip_tags($_POST["message"] ?? ""));
+
+// 2) Validation
+if ($name === "" || $message === "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  header("Location: index.html?status=error"); exit;
+}
+
+// 3) Préparation de l’e-mail
+$recipient = "hello@madeleine-marguerite.fr"; // ← ta vraie adresse
+$subject   = "Nouveau message de $name via le site Madeleine & Marguerite";
+
+$body  = "Nom: $name\n";
+$body .= "Email: $email\n\n";
+$body .= "Message:\n$message\n";
+
+// From = ton domaine (meilleure délivrabilité) ; l’expéditeur réel en Reply-To
+$headers  = "From: Madeleine & Marguerite <no-reply@madeleine-marguerite.fr>\r\n";
+$headers .= "Reply-To: $name <$email>\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+// 4) Envoi (décommente en prod si mail() dispo ; sinon configure SMTP)
+$ok = true; // $ok = mail($recipient, $subject, $body, $headers);
+
+if ($ok) {
+  header("Location: merci.html"); exit;
+} else {
+  header("Location: index.html?status=send_error"); exit;
+}
+
+
+====================
+MENTIONS.HTML
+====================
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales - Madeleine & Marguerite</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding: var(--space-xl);
+        }
+        .container {
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: var(--space-lg);
+        }
+        h2 {
+            font-size: 2rem;
+            color: var(--color-accent-alt);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        a {
+            color: var(--color-accent);
+        }
+        .home-link {
+            display: block;
+            margin-top: var(--space-xl);
+        }
+        p {
+            color: var(--color-text-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="container flow">
+        <h1>Mentions Légales</h1>
+        
+        <p>Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, il est précisé aux utilisateurs du site Madeleine & Marguerite l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.</p>
+
+        <h2>Édition du site</h2>
+        <p>Le présent site, accessible à l’URL www.madeleineetmarguerite.fr (le « Site »), est édité par :<br>
+        [Nom de l'entreprise/personne], résidant à [Adresse], de nationalité Française (France), né(e) le [Date de naissance].</p>
+
+        <h2>Hébergement</h2>
+        <p>Le Site est hébergé par la société [Nom de l'hébergeur], situé [Adresse de l'hébergeur], (contact téléphonique ou email : [+33 (0)X XX XX XX XX]).</p>
+
+        <h2>Directeur de publication</h2>
+        <p>Le Directeur de la publication du Site est [Nom du directeur].</p>
+
+        <h2>Nous contacter</h2>
+        <p>Par téléphone : [+33 X XX XX XX XX]<br>
+        Par email : <a href="mailto:hello@madeleineetmarguerite.fr">hello@madeleineetmarguerite.fr</a></p>
+
+        <h2>Données personnelles</h2>
+        <p>Le traitement de vos données à caractère personnel est régi par notre Charte du respect de la vie privée, disponible depuis la section "Politique de Confidentialité", conformément au Règlement Général sur la Protection des Données 2016/679 du 27 avril 2016 («RGPD»).</p>
+
+        <a href="index.html" class="home-link btn-back">Retour à l'accueil</a>
+    </div>
+</body>
+</html>
